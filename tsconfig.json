@@ -3,6 +3,7 @@
     "baseUrl": "./",
     "paths": {
       "@styles/*": ["styles/*"],
+      "@pages/*": ["src/pages/*"],
     },
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],

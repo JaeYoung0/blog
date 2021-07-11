@@ -9,7 +9,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Head>
         <title>하루하늘</title>
         <meta name="description" content="하루에 한 번은 하늘을" />
-        <link rel="icon" href="/favicon2.ico" />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
       <Global styles={resetStyle} />
       <Component {...pageProps} />

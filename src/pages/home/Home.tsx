@@ -1,118 +1,98 @@
-import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import _ from "lodash";
 import * as S from "./Home.style";
+import useCurrentSection from "@hooks/useCurrentSection";
+import Navbar from "@components/Navbar";
+import { useEffect } from "react";
 
-function Navbar() {
-  const navbarHeight = 45;
-  const [hideNavbar, setHideNavbar] = useState(false);
-  useEffect(() => {
-    const handleNavbar = () => {
-      if (window.pageYOffset > navbarHeight) setHideNavbar(true);
-      if (window.pageYOffset < navbarHeight) setHideNavbar(false);
-    };
-    document.addEventListener("scroll", handleNavbar);
+export const SECTION_INFO = [
+  {
+    title: "0번 섹션",
+    vh: 150,
+    effects: {
+      opacity: {
+        scrollRange: [0, 0.3, 0.7, 1],
+        valueRange: [0, 1, 1, 0],
+      },
+      translateY: {
+        scrollRange: [0, 0.3, 0.7, 1],
+        valueRange: [10, 0, 0, -10],
+      },
+    },
+  },
 
-    () => {
-      document.removeEventListener("scroll", handleNavbar);
-    };
-  }, []);
-  return (
-    <S.Navigation hideNavbar={hideNavbar}>
-      <Link href="#">하루하늘</Link>
-      <Link href="#">메뉴1</Link>
-      <Link href="#">메뉴2</Link>
-      <Link href="#">메뉴3</Link>
-    </S.Navigation>
-  );
-}
+  {
+    title: "1번 섹션",
+    vh: 140,
+    // effects: {},
+  },
+  {
+    title: "2번 섹션",
+    vh: 200,
+    // effects: {},
+  },
+  {
+    title: "3번 섹션",
+    vh: 210,
+    // effects: {},
+  },
+];
+
+type EffectName = "opacity";
+
+export const calcEffect = (
+  name: string,
+  currentRatio: number,
+  effects?: any
+) => {
+  if (!effects) return;
+  const { valueRange, scrollRange } = effects[name];
+
+  let slope;
+  let interceptY;
+  let value;
+  // _.throttle(()=>{
+  for (let i = 0; i < scrollRange.length - 1; i++) {
+    slope =
+      (valueRange[i + 1] - valueRange[i]) /
+      (scrollRange[i + 1] - scrollRange[i]);
+
+    interceptY = valueRange[i] - slope * scrollRange[i];
+
+    value = slope * currentRatio + interceptY;
+
+    console.log("@@ slope, value", slope, value);
+
+    if (currentRatio >= scrollRange[i] && currentRatio <= scrollRange[i + 1]) {
+      return Math.round(value * 10) / 10;
+    }
+  }
+};
 
 export default function HomePage() {
-  const targetRefs = useRef<HTMLElement[] | null[]>([]);
+  const { currentSection, currentRatio } = useCurrentSection();
 
-  const [currentSection, setCurrentSection] = useState(0);
-
-  const buildThresholdList = () => {
-    let thresholds = [];
-    let numSteps = 50;
-
-    for (let i = 1.0; i <= numSteps; i++) {
-      let ratio = i / numSteps;
-      thresholds.push(ratio);
-    }
-
-    thresholds.push(0);
-    return thresholds;
-  };
-
-  useEffect(() => {
-    // const target2 = targetRef2.current;
-    // if (!target2) return;
-
-    // const target3 = targetRef3.current;
-    // if (!target3) return;
-
-    // if (!targetRefs.current) return
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          console.log(entry.target.getAttribute("id"));
-          console.log("ratio", entry.intersectionRatio);
-          console.log("height", entry.intersectionRect.height);
-
-          // console.log(
-          //   entry.intersectionRect.height / entry.target.scrollHeight
-          // );
-
-          // entry.target.style.opacity = entry.intersectionRatio;
-        });
-      },
-      {
-        threshold: buildThresholdList(),
-      }
-    );
-    targetRefs.current.forEach((target) => {
-      if (!target) return;
-      observer.observe(target);
-    });
-  }, []);
-
-  const arr = [0, 1, 2, 3];
+  console.log("@@section num, ratio", currentSection, currentRatio);
 
   return (
     <S.HomePageContainer>
       <Navbar />
-
-      <S.SectionContainer>
-        {arr.map((item, idx) => (
-          <>
-            <section
-              id={`scroll-section-${idx}`}
-              ref={(element) => {
-                targetRefs.current[idx] = element;
-              }}
+      <S.SectionContainer currentSection={currentSection}>
+        {SECTION_INFO.map((section, idx) => {
+          return (
+            <S.Section
+              height={section.vh}
+              currentRatio={currentRatio}
+              currentSection={currentSection}
+              show={idx === currentSection}
+              key={idx}
+              className="main__section"
             >
-              <h1 style={{ paddingTop: "50vh" }}>{`섹션${item}`}</h1>
-            </section>
-          </>
-        ))}
-
-        {/* <section id="main__section1">
-            <h1 style={{ paddingTop: "50vh" }}>섹션1</h1>
-          </section>
-  
-          <section id="main__section2" ref={targetRef2}>
-            <h1 style={{ paddingTop: "50vh" }}>섹션2</h1>
-          </section>
-  
-          <section id="main__section3" ref={targetRef3}>
-            <h1 style={{ paddingTop: "50vh" }}>섹션3</h1>
-          </section>
-  
-          <section id="main__section4">
-            <h1 style={{ paddingTop: "50vh" }}>섹션4</h1>
-          </section> */}
+              <h1>{section.title}</h1>
+            </S.Section>
+          );
+        })}
       </S.SectionContainer>
+
       <S.Footer>
         <span>Footer</span>
       </S.Footer>

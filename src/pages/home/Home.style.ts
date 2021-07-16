@@ -1,5 +1,62 @@
 import styled from "@emotion/styled";
 import { css } from "@emotion/react";
+import { SECTION_INFO, calcEffect } from "./Home";
+import _ from "lodash";
+
+export const Section = styled.section<{
+  height: number;
+  currentRatio: number;
+  show?: boolean;
+  currentSection: number;
+
+  // opa?: number;
+}>`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+  border: 1px solid red;
+
+  h1 {
+    font-size: 4.5rem;
+    padding-top: 50vh;
+    display: none;
+    position: fixed;
+    top: 0;
+    opacity: 1;
+  }
+
+  ${({ currentRatio, currentSection }) => css`
+    h1 {
+      opacity: ${calcEffect(
+        "opacity",
+        currentRatio,
+        SECTION_INFO[currentSection]?.effects
+      )};
+
+      transform: translateY(
+        ${calcEffect(
+          "translateY",
+          currentRatio,
+          SECTION_INFO[currentSection]?.effects
+        )}%
+      );
+    }
+  `}
+
+  ${({ height }) => css`
+    height: ${height}vh;
+  `}
+
+  ${({ show }) =>
+    show &&
+    css`
+      h1 {
+        display: block;
+      }
+    `}
+`;
 
 export const HomePageContainer = styled.div`
   display: flex;
@@ -17,62 +74,6 @@ export const Footer = styled.footer`
   align-items: center;
 `;
 
-export const Navigation = styled.nav<{ hideNavbar: boolean }>`
-  position: fixed;
-  top: 0;
-  left: 0;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+export const SectionContainer = styled.div<{ currentSection: number }>`
   width: 100%;
-  height: 45px;
-
-  padding: 30px;
-
-  background-color: #99b5d2;
-
-  a {
-    font-size: 15px;
-    margin: 0 10px;
-    color: black;
-
-    &:nth-of-type(1) {
-      margin-right: auto;
-    }
-  }
-
-  ${({ hideNavbar }) =>
-    hideNavbar &&
-    css`
-      transform: translateY(-100%);
-      transition: 0.5s ease-in-out;
-    `}
-
-  ${({ hideNavbar }) =>
-    !hideNavbar &&
-    css`
-      transform: translateY(0%);
-      transition: 0.5s ease-in-out;
-    `}
-`;
-
-export const SectionContainer = styled.div`
-  width: 100%;
-  section {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-
-    border: 1px solid red;
-    padding-bottom: 100vh;
-  }
-  h1 {
-    /* position: fixed;
-    text-align: center;
-    left: 0;
-    top: 100px;
-    width: 100%; */
-  }
 `;

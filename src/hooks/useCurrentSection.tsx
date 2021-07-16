@@ -78,7 +78,7 @@ function useCurrentSection() {
 
         setCurrentSection(newCurrent);
         setcurrentRatio(newRatio);
-      }, 100)
+      }, 50)
     );
   }, [sectionInfo, currentSection]);
 

@@ -1,3 +1,7 @@
 {
-  "extends": ["next", "next/core-web-vitals"]
+  "extends": [
+    "@ridi/eslint-config",
+    "@ridi/eslint-config/typescript",
+    "@ridi/eslint-config/react"
+  ]
 }

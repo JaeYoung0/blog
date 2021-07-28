@@ -1,0 +1,6 @@
+{
+    "extends": [
+        "@ridi/eslint-config",
+        "@ridi/eslint-config/prettier"
+    ]
+}

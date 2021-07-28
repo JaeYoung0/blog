@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import _ from "lodash";
 
 // FIXME: for문 사용하지 말자
+// 쓸데 없이 복잡하게 만들었나...
+
 const makeSwithPointArr = (sectionInfo: any[]) => {
   const offsetHeightArr = sectionInfo.map((item) => item.offsetHeight);
   let switchPoint: number[] = [];
@@ -41,17 +43,29 @@ interface Info {
   offsetHeight: number;
 }
 
-function useCurrentSection() {
+function useCurrentSection(
+  classNameOfSections: string,
+  lengthOfSections: number
+) {
   const [sectionInfo, setSectionInfo] = useState<Info[]>([]);
   const [currentSection, setCurrentSection] = useState(0);
   const [currentRatio, setcurrentRatio] = useState(0);
 
+  const [
+    sectionElements,
+    setSectionElements,
+  ] = useState<NodeListOf<Element> | null>(null);
+
   useEffect(() => {
-    const elements = document.querySelectorAll(".main__section");
+    const selectedElements = document.querySelectorAll(
+      `.${classNameOfSections}`
+    );
+    console.log("@@@@selectedElements", selectedElements);
+    setSectionElements(selectedElements);
+
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         const rect = entry.boundingClientRect;
-        console.log("!!entry.boundingClientRect", rect);
 
         setSectionInfo((prevState) => {
           return [...prevState, { offsetY: rect.y, offsetHeight: rect.height }];
@@ -60,7 +74,7 @@ function useCurrentSection() {
       observer.disconnect();
     });
 
-    elements.forEach((element) => observer.observe(element));
+    selectedElements.forEach((element) => observer.observe(element));
   }, []);
 
   useEffect(() => {
@@ -82,7 +96,24 @@ function useCurrentSection() {
     );
   }, [sectionInfo, currentSection]);
 
-  return { currentSection, currentRatio };
+  const handlePlusClick = () => {
+    if (currentSection === lengthOfSections - 1 || !sectionElements) return;
+
+    const target = sectionElements[currentSection + 1] as HTMLElement;
+    window.scrollTo({ top: target.offsetTop, behavior: "smooth" });
+  };
+
+  const handleMinusClick = () => {
+    if (currentSection === 0 || !sectionElements) return;
+
+    const target = sectionElements[currentSection - 1] as HTMLElement;
+    // const target = document.getElementsByClassName(
+    //   `section__${currentSection - 1}`
+    // )[0] as HTMLElement;
+    window.scrollTo({ top: target.offsetTop, behavior: "smooth" });
+  };
+
+  return { currentSection, currentRatio, handlePlusClick, handleMinusClick };
 }
 
 export default useCurrentSection;

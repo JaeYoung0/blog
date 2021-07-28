@@ -40,10 +40,11 @@ export const resetStyle = css`
     box-sizing: border-box;
   }
 
+  /* TODO. reset css 검색해서 괜찮은거 붙이자! */
   html {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     font-size: 10px;
-    font-family: SlowSlow;
+    font-family: NanumBarunGothic;
 
     @media (${isSmallMobile}) {
       font-size: 8px;
@@ -64,6 +65,10 @@ export const resetStyle = css`
   body,
   strong,
   span,
+  h1,
+  h2,
+  h3,
+  h4,
   b {
     padding: 0;
     margin: 0;

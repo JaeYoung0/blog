@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import { css } from "@emotion/react";
+import { COLORS } from "@constants/colors";
 
 export const Navigation = styled.nav<{ hideNavbar: boolean }>`
   position: fixed;
@@ -9,22 +10,21 @@ export const Navigation = styled.nav<{ hideNavbar: boolean }>`
 
   display: flex;
   justify-content: space-between;
+  justify-content: center;
+
   align-items: center;
   width: 100%;
   height: 45px;
 
   padding: 30px;
 
-  background-color: #99b5d2;
+  /* background-color: #99b5d2; */
+  background-color: white;
 
   a {
-    font-size: 15px;
+    color: skyblue;
+    font-size: 4.5rem;
     margin: 0 10px;
-    color: black;
-
-    &:nth-of-type(1) {
-      margin-right: auto;
-    }
   }
 
   ${({ hideNavbar }) =>

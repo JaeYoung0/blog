@@ -6,6 +6,7 @@
       "@pages/*": ["src/pages/*"],
       "@hooks/*": ["src/hooks/*"],
       "@components/*": ["src/components/*"],
+      "@constants/*": ["src/constants/*"],
     },
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],

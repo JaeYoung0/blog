@@ -15,7 +15,7 @@ const DATA = [
 
 function WildGeese() {
   const { currentRatio, currentSection } = useCurrentSection("poem", 4);
-  console.log("^^^^currentSection", currentSection);
+  console.log("@@@@currentSection", currentSection);
 
   return (
     <S.Container currentSection={currentSection}>

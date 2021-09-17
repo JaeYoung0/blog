@@ -3,7 +3,6 @@ import * as S from "./Hamburger.style";
 
 function Hamburger() {
   const [isOpened, setIsOpened] = useState(false);
-  console.log("@@isOpened", isOpened);
 
   return (
     <>

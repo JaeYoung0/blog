@@ -51,16 +51,14 @@ function useCurrentSection(
   const [currentSection, setCurrentSection] = useState(0);
   const [currentRatio, setcurrentRatio] = useState(0);
 
-  const [
-    sectionElements,
-    setSectionElements,
-  ] = useState<NodeListOf<Element> | null>(null);
+  const [sectionElements, setSectionElements] =
+    useState<NodeListOf<Element> | null>(null);
 
   useEffect(() => {
     const selectedElements = document.querySelectorAll(
       `.${classNameOfSections}`
     );
-    console.log("@@@@selectedElements", selectedElements);
+
     setSectionElements(selectedElements);
 
     const observer = new IntersectionObserver((entries) => {

@@ -28,7 +28,8 @@
     "lodash": "^4.17.21",
     "next": "11.1.1",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "swiper": "^7.0.6"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.171",

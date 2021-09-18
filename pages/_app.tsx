@@ -2,6 +2,7 @@ import type { AppProps } from "next/app";
 import Head from "next/head";
 import { Global } from "@emotion/react";
 import { resetStyle } from "@styles/resetStyle";
+import MediaQuery from "@styles/MediaQuery";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -12,6 +13,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Global styles={resetStyle} />
+      <MediaQuery />
       <Component {...pageProps} />
     </div>
   );

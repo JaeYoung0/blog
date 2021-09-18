@@ -3,7 +3,8 @@ import { css } from "@emotion/react";
 import { COLORS } from "@constants/colors";
 
 export const Navigation = styled.nav<{ hideNavbar: boolean }>`
-  position: fixed;
+  position: sticky;
+  /* position: fixed; */
   top: 0;
   left: 0;
   z-index: 10;
@@ -14,16 +15,16 @@ export const Navigation = styled.nav<{ hideNavbar: boolean }>`
 
   align-items: center;
   width: 100%;
-  height: 45px;
+  height: 4.5rem;
 
-  padding: 30px;
+  padding: 5rem;
 
   /* background-color: #99b5d2; */
-  background-color: white;
+  background-color: #222222;
 
   a {
     color: skyblue;
-    font-size: 4.5rem;
+    font-size: 2.5rem;
     margin: 0 10px;
   }
 

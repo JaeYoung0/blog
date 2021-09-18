@@ -1,17 +1,14 @@
-import React, { useState } from "react";
 import * as S from "./Hamburger.style";
 
-function Hamburger() {
-  const [isOpened, setIsOpened] = useState(false);
-
+interface Props {
+  open: boolean;
+  onClick: () => void;
+}
+function Hamburger({ open, onClick }: Props) {
   return (
     <>
-      <S.HamburgerButton
-        onClick={() => {
-          setIsOpened(!isOpened);
-        }}
-      >
-        <S.Line isOpened={isOpened} />
+      <S.HamburgerButton onClick={onClick}>
+        <S.Line isOpened={open} />
       </S.HamburgerButton>
     </>
   );

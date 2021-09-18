@@ -1,12 +1,14 @@
 import { css } from "@emotion/react";
 
-const isSmallMobile = `min-width: 320px`;
-const isMobile = `min-width: 375px`;
-const isTablet = `min-width: 800px`;
-const isDesktop = `min-width: 1024px`;
+const breakpoints = [320, 414, 1200];
 
-// 눈누에서 가져온 font-face
+const MEDIA_QUERY_ARR = breakpoints.map((bp) => `@media (min-width: ${bp}px)`);
+
+const DEFAULT_FONT_SIZE = 10;
+const DEFAULT_DEVICE_WIDTH = 414;
+
 export const resetStyle = css`
+  /* font-face */
   @font-face {
     font-family: "Cafe24SsurroundAir";
     src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24SsurroundAir.woff")
@@ -28,51 +30,148 @@ export const resetStyle = css`
         format("truetype");
   }
 
-  @font-face {
-    font-family: "SlowSlow";
-    src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/naverfont_10@1.0/SlowSlow.woff")
-      format("woff");
-    font-weight: normal;
-    font-style: normal;
-  }
-
-  * {
-    box-sizing: border-box;
-  }
-
-  /* TODO. reset css 검색해서 괜찮은거 붙이자! */
-  html {
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    font-size: 10px;
-    font-family: NanumBarunGothic;
-
-    @media (${isSmallMobile}) {
-      font-size: 8px;
-    }
-
-    @media (${isMobile}) {
-      font-size: 10px;
-    }
-
-    @media (${isTablet}) {
-      font-size: 12px;
-    }
-
-    @media (${isDesktop}) {
-      font-size: 14px;
-    }
-  }
+  /* Eric Meyer - reset style */
+  html,
   body,
-  strong,
+  div,
   span,
+  applet,
+  object,
+  iframe,
   h1,
   h2,
   h3,
   h4,
-  b {
-    padding: 0;
+  h5,
+  h6,
+  p,
+  blockquote,
+  pre,
+  a,
+  abbr,
+  acronym,
+  address,
+  big,
+  cite,
+  code,
+  del,
+  dfn,
+  em,
+  img,
+  ins,
+  kbd,
+  q,
+  s,
+  samp,
+  small,
+  strike,
+  strong,
+  sub,
+  sup,
+  tt,
+  var,
+  b,
+  u,
+  i,
+  center,
+  dl,
+  dt,
+  dd,
+  ol,
+  ul,
+  li,
+  fieldset,
+  form,
+  label,
+  legend,
+  table,
+  caption,
+  tbody,
+  tfoot,
+  thead,
+  tr,
+  th,
+  td,
+  article,
+  aside,
+  canvas,
+  details,
+  embed,
+  figure,
+  figcaption,
+  footer,
+  header,
+  hgroup,
+  menu,
+  nav,
+  output,
+  ruby,
+  section,
+  summary,
+  time,
+  mark,
+  audio,
+  video {
     margin: 0;
-    /* font-family: SF Pro Display, NotoSansCJKkr; */
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+  }
+
+  article,
+  aside,
+  details,
+  figcaption,
+  figure,
+  footer,
+  header,
+  hgroup,
+  menu,
+  nav,
+  section {
+    display: block;
+  }
+  body {
+    line-height: 1;
+  }
+  ol,
+  ul {
+    list-style: none;
+  }
+  blockquote,
+  q {
+    quotes: none;
+  }
+  blockquote:before,
+  blockquote:after,
+  q:before,
+  q:after {
+    content: "";
+    content: none;
+  }
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+
+  /* my styles */
+  * {
+    box-sizing: border-box;
+  }
+  html {
+    font-size: 10px;
+    font-family: NanumBarunGothic;
+
+    /* small 이니 large니 이름지을 필요 없이 */
+    ${MEDIA_QUERY_ARR[0]} {
+      font-size: calc((${DEFAULT_FONT_SIZE} / ${DEFAULT_DEVICE_WIDTH}) * 100vw);
+    }
+
+    ${MEDIA_QUERY_ARR[1]} {
+      font-size: ${DEFAULT_FONT_SIZE}px;
+    }
   }
 
   button {

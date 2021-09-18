@@ -1,12 +1,5 @@
 import { css } from "@emotion/react";
 
-const breakpoints = [320, 414, 1200];
-
-const MEDIA_QUERY_ARR = breakpoints.map((bp) => `@media (min-width: ${bp}px)`);
-
-const DEFAULT_FONT_SIZE = 10;
-const DEFAULT_DEVICE_WIDTH = 414;
-
 export const resetStyle = css`
   /* font-face */
   @font-face {
@@ -160,18 +153,9 @@ export const resetStyle = css`
   * {
     box-sizing: border-box;
   }
+
   html {
-    font-size: 10px;
     font-family: NanumBarunGothic;
-
-    /* small 이니 large니 이름지을 필요 없이 */
-    ${MEDIA_QUERY_ARR[0]} {
-      font-size: calc((${DEFAULT_FONT_SIZE} / ${DEFAULT_DEVICE_WIDTH}) * 100vw);
-    }
-
-    ${MEDIA_QUERY_ARR[1]} {
-      font-size: ${DEFAULT_FONT_SIZE}px;
-    }
   }
 
   button {

@@ -7,8 +7,8 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <div>
       <Head>
-        <title>하루하늘</title>
-        <meta name="description" content="하루에 한 번은 하늘을" />
+        <title>J.Young</title>
+        <meta name="description" content="" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Global styles={resetStyle} />

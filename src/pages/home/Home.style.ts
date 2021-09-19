@@ -1,8 +1,6 @@
 import styled from "@emotion/styled";
 import { css } from "@emotion/react";
 
-// import { MEDIA_QUERY_ARR } from "@styles/MediaQuery";
-
 const backgroundClip = css`
   background-clip: text;
   -webkit-background-clip: text;
@@ -11,6 +9,7 @@ const backgroundClip = css`
 
 export const Banner = styled.div`
   background-image: url("https://images.unsplash.com/photo-1498496294664-d9372eb521f3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80)");
+  background-position: top;
   ${backgroundClip}
 
   width: 100%;

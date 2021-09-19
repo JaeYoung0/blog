@@ -4,12 +4,12 @@ import { css } from "@emotion/react";
 
 export const HamburgerButton = styled.div`
   position: absolute;
-  left: 10px;
+  left: 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 80px;
-  height: 80px;
+  width: 8rem;
+  height: 8rem;
 
   cursor: pointer;
   transition: all 0.5 ease-in-out;
@@ -22,8 +22,8 @@ export const HamburgerButton = styled.div`
 `;
 
 export const Line = styled.div<{ isOpened: boolean }>`
-  width: 50px;
-  height: 4px;
+  width: 5rem;
+  height: 0.4rem;
   background-color: skyblue;
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(255, 101, 47, 0.2);
@@ -33,8 +33,8 @@ export const Line = styled.div<{ isOpened: boolean }>`
   ::after {
     position: absolute;
     content: "";
-    width: 50px;
-    height: 4px;
+    width: 5rem;
+    height: 0.4rem;
     background-color: skyblue;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(255, 101, 47, 0.2);

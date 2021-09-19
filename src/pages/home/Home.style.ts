@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { css } from "@emotion/react";
 
-import { MEDIA_QUERY_ARR } from "@styles/MediaQuery";
+// import { MEDIA_QUERY_ARR } from "@styles/MediaQuery";
 
 const backgroundClip = css`
   background-clip: text;
@@ -16,15 +16,13 @@ export const Banner = styled.div`
   width: 100%;
   text-align: center;
 
-  ${MEDIA_QUERY_ARR("small")} {
-    h1 {
-      font-size: 10rem;
-      margin-bottom: 2rem;
-    }
-    h2 {
-      font-size: 4.5rem;
-      line-height: 1.3;
-    }
+  h1 {
+    font-size: 10rem;
+    margin-bottom: 2rem;
+  }
+  h2 {
+    font-size: 4.5rem;
+    line-height: 1.3;
   }
 `;
 

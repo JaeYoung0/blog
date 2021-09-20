@@ -156,6 +156,7 @@ export const resetStyle = css`
 
   html {
     font-family: NanumBarunGothic;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   }
 
   button {

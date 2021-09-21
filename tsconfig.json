@@ -7,7 +7,9 @@
       "@hooks/*": ["src/hooks/*"],
       "@components/*": ["src/components/*"],
       "@constants/*": ["src/constants/*"],
-      "@icons/*": ["src/icons/*"]
+      "@icons/*": ["src/icons/*"],
+      "@services/*": ["src/services/*"],
+      "@atoms/*": ["src/atoms/*"]
     },
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],

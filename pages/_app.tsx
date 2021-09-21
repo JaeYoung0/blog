@@ -3,10 +3,11 @@ import Head from "next/head";
 import { Global } from "@emotion/react";
 import { resetStyle } from "@styles/resetStyle";
 import MediaQuery from "@styles/MediaQuery";
+import { RecoilRoot } from "recoil";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <div>
+    <>
       <Head>
         <title>J.Young</title>
         <meta name="description" content="" />
@@ -14,8 +15,11 @@ function MyApp({ Component, pageProps }: AppProps) {
       </Head>
       <Global styles={resetStyle} />
       <MediaQuery />
-      <Component {...pageProps} />
-    </div>
+      <RecoilRoot>
+        <Component {...pageProps} />
+      </RecoilRoot>
+    </>
   );
 }
+
 export default MyApp;

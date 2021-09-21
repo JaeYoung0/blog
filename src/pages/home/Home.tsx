@@ -2,12 +2,18 @@ import _ from "lodash";
 import * as S from "./Home.style";
 import DefaultLayout from "src/layouts/DefaultLayout";
 
-export default function HomePage() {
+import useUser from "@hooks/useUser";
+
+function HomePage() {
+  const { me } = useUser();
+
   return (
     <DefaultLayout>
       <S.Wrapper>
         <S.Banner>
           <h1>하루</h1>
+          {me && <h2>{me?.email}님, </h2>}
+
           <h2>
             Try to love
             <br />
@@ -18,3 +24,5 @@ export default function HomePage() {
     </DefaultLayout>
   );
 }
+
+export default HomePage;

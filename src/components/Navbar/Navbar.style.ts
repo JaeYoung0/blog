@@ -2,7 +2,10 @@ import styled from "@emotion/styled";
 import { css } from "@emotion/react";
 import { COLORS } from "@constants/colors";
 
-export const Navigation = styled.nav<{ hideNavbar: boolean }>`
+export const Navigation = styled.nav<{
+  hideNavbar: boolean;
+  background: string;
+}>`
   position: sticky;
   /* position: fixed; */
   top: 0;
@@ -20,7 +23,10 @@ export const Navigation = styled.nav<{ hideNavbar: boolean }>`
   padding: 5rem;
 
   /* background-color: #99b5d2; */
-  background-color: #222222;
+
+  ${({ background }) => css`
+    background: ${background};
+  `}
 
   a {
     color: skyblue;
@@ -32,13 +38,13 @@ export const Navigation = styled.nav<{ hideNavbar: boolean }>`
     hideNavbar &&
     css`
       transform: translateY(-100%);
-      transition: 0.5s ease-out;
+      transition: transform 0.5s ease-out;
     `}
 
   ${({ hideNavbar }) =>
     !hideNavbar &&
     css`
       transform: translateY(0%);
-      transition: 0.5s ease-out;
+      transition: transform 0.5s ease-out;
     `}
 `;

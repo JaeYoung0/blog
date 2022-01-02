@@ -52,7 +52,7 @@ export default function Navbar() {
               cursor: pointer;
             `}
           >
-            J.Young's blog
+            um ...
           </span>
         </Link>
 
@@ -81,10 +81,6 @@ export default function Navbar() {
           </Link>
         </div>
       </TopMenuWrapper>
-
-      {/* <Link href="#">메뉴1</Link>
-      <Link href="#">메뉴2</Link>
-      <Link href="#">메뉴3</Link> */}
 
       <Drawer
         css={css`

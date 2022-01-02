@@ -3,6 +3,7 @@ import * as S from "./Home.style";
 import DefaultLayout from "src/layouts/DefaultLayout";
 
 import useUser from "@hooks/useUser";
+import MarkdownRenderer from "@components/MarkdownRenderer";
 
 function HomePage() {
   const { me } = useUser();
@@ -11,7 +12,7 @@ function HomePage() {
     <DefaultLayout>
       <S.Wrapper>
         <S.Banner>
-          <h1>하루</h1>
+          <h1>Hinu</h1>
           {me && <h2>{me?.email}님, </h2>}
 
           <h2>
@@ -20,6 +21,7 @@ function HomePage() {
             all the questions{" "}
           </h2>
         </S.Banner>
+        {/* <MarkdownRenderer fileName="pick" /> */}
       </S.Wrapper>
     </DefaultLayout>
   );

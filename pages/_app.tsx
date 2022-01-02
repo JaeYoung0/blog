@@ -9,7 +9,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <title>J.Young</title>
+        <title>Hinu</title>
         <meta name="description" content="" />
         <link rel="icon" href="/favicon.ico" />
       </Head>

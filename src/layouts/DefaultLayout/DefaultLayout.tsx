@@ -2,11 +2,16 @@ import React from "react";
 import Navbar from "@components/Navbar";
 import { css } from "@emotion/react";
 
-function DefaultLayout({ children }: { children: React.ReactNode }) {
+interface Props {
+  children: React.ReactNode;
+  backgroud: string;
+}
+
+function DefaultLayout({ children, backgroud = "#222222" }: Props) {
   return (
     <div
       css={css`
-        background: #222222;
+        background: ${backgroud};
         min-height: 100vh;
         overflow-x: hidden;
       `}

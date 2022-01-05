@@ -4,7 +4,7 @@ import { css } from "@emotion/react";
 
 interface Props {
   children: React.ReactNode;
-  backgroud: string;
+  backgroud?: string;
 }
 
 function DefaultLayout({ children, backgroud = "#222222" }: Props) {

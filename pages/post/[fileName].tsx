@@ -1,5 +1,6 @@
 import MarkdownRenderer from "@components/MarkdownRenderer";
 import { GetStaticPaths, GetStaticProps } from "next";
+import DefaultLayout from "src/layouts/DefaultLayout";
 import { getAllPosts, getPostData } from "./helper";
 
 interface Props {
@@ -13,9 +14,9 @@ interface Props {
 
 export default function Post({ meta, content }: Props) {
   return (
-    <div style={{ background: "#0d1117" }}>
+    <DefaultLayout backgroud="#0d1117">
       <MarkdownRenderer markdownContent={content} />
-    </div>
+    </DefaultLayout>
   );
 }
 

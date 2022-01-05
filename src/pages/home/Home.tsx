@@ -21,7 +21,6 @@ function HomePage() {
             all the questions{" "}
           </h2>
         </S.Banner>
-        {/* <MarkdownRenderer fileName="pick" /> */}
       </S.Wrapper>
     </DefaultLayout>
   );

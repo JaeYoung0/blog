@@ -1,3 +1,8 @@
+---
+title: test
+date: 2020
+---
+
 # 1. Pick
 
 [challenge1](https://github.com/type-challenges/type-challenges/blob/master/questions/4-easy-pick/README.md)
@@ -8,14 +13,14 @@
 
      - The following type `P` is the same type as `“x” | “y”`
 
-       ```tsx
+       ```jsx
        type Point = { x: number; y: number };
        type P = keyof Point; // “x” | “y”
        ```
 
      - object type에 index signature가 있다면 index signature의 타입들을 반환한다.
 
-       ```tsx
+       ```jsx
        type Arrayish = { [n: number]: unknown };
        type A = keyof Arrayish; // number
 
@@ -30,7 +35,7 @@
 
 - **in** operator - Key Remapping in Mapped Types
 
-  ```tsx
+  ```jsx
   type Options = {
     [K in
       | "noImplicitAny"
@@ -46,7 +51,7 @@
   //   };
   ```
 
-  ```tsx
+  ```jsx
   /// 'Partial<T>' is the same as 'T', but with each property marked optional.
   type Partial<T> = {
     [K in keyof T]?: T[K];

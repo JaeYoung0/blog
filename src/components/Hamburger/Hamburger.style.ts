@@ -2,14 +2,16 @@ import { MEDIA_QUERY_ARR } from "@styles/MediaQuery";
 import styled from "@emotion/styled";
 import { css } from "@emotion/react";
 
+const SIZE = 3.5;
+
 export const HamburgerButton = styled.div`
   position: absolute;
-  left: 1rem;
+  left: 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 8rem;
-  height: 8rem;
+  width: ${SIZE}rem;
+  height: ${SIZE}rem;
 
   cursor: pointer;
   transition: all 0.5 ease-in-out;
@@ -33,7 +35,7 @@ export const Line = styled.div<{ isOpened: boolean }>`
   ::after {
     position: absolute;
     content: "";
-    width: 5rem;
+    width: ${SIZE}rem;
     height: 0.4rem;
     background-color: skyblue;
     border-radius: 5px;
@@ -42,11 +44,11 @@ export const Line = styled.div<{ isOpened: boolean }>`
     transition: all 0.3s ease-in-out;
   }
   &::before {
-    transform: translateY(-13px);
+    transform: translateY(-1rem);
   }
 
   &::after {
-    transform: translateY(13px);
+    transform: translateY(1rem);
   }
 
   ${({ isOpened }) =>
@@ -56,7 +58,6 @@ export const Line = styled.div<{ isOpened: boolean }>`
         transform: translateX(-50px);
         background: transparent;
         box-shadow: none;
-        /* transition: all 0.5 ease-in-out; */
       }
 
       &::before {

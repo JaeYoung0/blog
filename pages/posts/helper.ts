@@ -10,7 +10,7 @@ export const getPostData = (fileName: string) => {
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const { data, content } = matter(fileContents);
 
-  return { fileName, meta: data, content };
+  return { fileName: formattedFileName, meta: data, content };
 };
 
 export const getAllPosts = async () => {

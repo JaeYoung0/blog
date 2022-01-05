@@ -34,7 +34,7 @@ export const getStaticProps: GetStaticProps<
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const posts = await getAllPosts();
-
+  console.log("@@posts", posts);
   return {
     paths: posts.map((post) => {
       return {

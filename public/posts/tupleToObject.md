@@ -1,0 +1,31 @@
+---
+title: typescript Challenge 3
+description: "Tuple to Object"
+date: "2021-01-06"
+---
+
+# 3. Tuple to Object
+
+- Q. `keyof` 는 object type의 key들을 모아서 union type을 만들어준다. 그런데 **tuple의 요소들을 모아서 union type으로 만들고 싶다면** 어떻게 해야할까
+
+  - code
+
+    ```tsx
+    const tuple = ["tesla", "model 3", "model X", "model Y"] as const;
+
+    type FOO<T extends readonly PropertyKey[]> = T[number];
+    type ZOO = FOO<typeof tuple>; // "tesla" | "model 3" | "model X" | "model Y"
+    ```
+
+- [Creating Types from Types](https://www.typescriptlang.org/docs/handbook/2/types-from-types.html)
+  - 타입스크립트의 타입 시스템이 강력한 이유 - 타입으로 또 다른 타입을 표현할 수 있기 때문
+  - type operator, 제네릭들을 활용하여 타입의 관점에서 다른 타입을 만드는 것 뿐만 아니라, 값의 관점에서 다른 타입을 만들어낼 수도 있다.
+    - Generics
+    - Keyof Type Operator
+    - Typeof Type Operator
+      [https://www.typescriptlang.org/docs/handbook/2/typeof-types.html](https://www.typescriptlang.org/docs/handbook/2/typeof-types.html)
+      - To refer to the *type* that the *value `f`* has, we use `typeof`
+    - Indexed Access Types
+    - Conditional Types
+    - Mapped Types
+    - Template Literal Types

@@ -1,33 +1,23 @@
-import { useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
 import * as S from "./MarkdownRenderer.style";
 import "github-markdown-css/github-markdown.css";
-import highlight from "rehype-highlight";
+import rehypePrism from "rehype-prism-plus";
 
 interface Props {
-  fileName: string;
+  markdownContent: string;
 }
 
-function MarkdownRenderer({ fileName }: Props) {
-  const [post, setPost] = useState("");
-
-  useEffect(() => {
-    fetch(`/markdown/${fileName}.md`)
-      .then((res) => res.text())
-      .then((text) => setPost(text))
-      .catch((error) => console.error(error));
-  }, []);
-
+function MarkdownRenderer({ markdownContent }: Props) {
   return (
-    <S.Wrapper>
-      <ReactMarkdown
-        className="markdown-body"
-        children={post}
-        remarkPlugins={[remarkGfm]}
-        rehypePlugins={[highlight]}
-      />
-    </S.Wrapper>
+    <>
+      <S.Wrapper>
+        <ReactMarkdown
+          className="markdown-body"
+          children={markdownContent}
+          rehypePlugins={[rehypePrism]}
+        />
+      </S.Wrapper>
+    </>
   );
 }
 

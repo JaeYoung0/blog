@@ -44,7 +44,7 @@ export default function Navbar() {
           }
         `}
       >
-        <Link href="#">
+        <Link href="/posts">
           <span
             css={css`
               font-size: 2.5rem;
@@ -52,7 +52,7 @@ export default function Navbar() {
               cursor: pointer;
             `}
           >
-            um ...
+            Hinu
           </span>
         </Link>
 
@@ -105,8 +105,8 @@ export default function Navbar() {
           }
         `}
       >
-        <li>블로그</li>
-        <li onClick={() => handleDrawerMenuClick("cloud")}>구름</li>
+        <li onClick={() => router.push("/")}>블로그</li>
+        {/* <li onClick={() => handleDrawerMenuClick("cloud")}>구름</li> */}
 
         {me ? (
           <li

@@ -1,6 +1,7 @@
 ---
-title: test
-date: 2020
+title: typescript Challenge 1
+description: "Pick"
+date: "2021-01-06"
 ---
 
 # 1. Pick

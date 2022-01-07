@@ -1,8 +1,8 @@
 import { GetStaticProps } from "next";
 import DefaultLayout from "src/layouts/DefaultLayout";
-import { getAllPosts } from "./helper";
-import { PostsPageProps } from "./type";
-import * as S from "./Posts.style";
+import { getAllPosts } from "../../src/pages/posts/helper";
+import { PostsPageProps } from "../../src/pages/posts/type";
+import * as S from "../../src/pages/posts/posts.style";
 import { useRouter } from "next/router";
 
 export default function Posts({ posts }: PostsPageProps) {

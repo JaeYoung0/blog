@@ -1,7 +1,5 @@
-import React from "react";
-
 import styled from "@emotion/styled";
-import { css, keyframes } from "@emotion/react";
+import { keyframes } from "@emotion/react";
 
 const ShiftDashOffsetAni = keyframes`
 0% {
@@ -36,14 +34,12 @@ const Wrapper = styled.div`
   align-items: center;
 
   background: white;
-  /* opacity: 0.7; */
 
   svg {
     animation: ${rotateAni} 2s infinite;
   }
 
   circle {
-    /* stroke: black; */
     stroke-width: 4;
     fill: transparent;
 
@@ -58,7 +54,7 @@ interface Props {
   strokeColor?: string;
 }
 
-function Spinner({ radius = 25, strokeColor = "black" }) {
+function Spinner({ radius = 25, strokeColor = "black" }: Props) {
   return (
     <>
       <Wrapper>

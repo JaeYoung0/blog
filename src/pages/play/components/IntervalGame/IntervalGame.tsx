@@ -1,6 +1,5 @@
 import styled from "@emotion/styled";
-import { css } from "@emotion/react";
-import React, { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 
 const Wrapper = styled.div`
   display: flex;
@@ -42,8 +41,8 @@ function useInterval(callback: () => void, delay: number, isRunning: boolean) {
 
 function IntervalGame() {
   const [count, setCount] = useState(0);
-  const [delay, setDelay] = useState(1000);
-  const [isRunning, setIsRunning] = useState(false);
+  // const [delay, setDelay] = useState(1000);
+  // const [isRunning, setIsRunning] = useState(false);
   const [money, setMoney] = useState(0);
   const [totalMoney, setTotalMoney] = useState(0);
   const [isMoneyRunning, setIsMoneyRunning] = useState(false);
@@ -83,15 +82,15 @@ function IntervalGame() {
 
   //   try4. best
 
-  useInterval(
-    () => {
-      console.log(`@@useInterval 실행 count: ${count}`);
+  // useInterval(
+  //   () => {
+  //     console.log(`@@useInterval 실행 count: ${count}`);
 
-      setCount(count + 1);
-    },
-    delay,
-    isRunning
-  );
+  //     setCount(count + 1);
+  //   },
+  //   delay,
+  //   isRunning
+  // );
 
   useInterval(
     () => {

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 const RSP_ARR = ["가위", "바위", "보"];
 

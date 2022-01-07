@@ -1,8 +1,7 @@
-import React from "react";
 import * as S from "./WildGeese.style";
 import useCurrentSection from "@hooks/useCurrentSection";
 
-const DATA = [
+export const DATA = [
   {
     content: `You do not have to be good.\nYou do not have to walk on your knees\nfor a hundred miles through the desert repenting.`,
   },
@@ -19,8 +18,6 @@ function WildGeese() {
 
   return (
     <S.Container currentSection={currentSection}>
-      {/* <h1>WildGeese</h1> */}
-
       <section className="poem">
         <article>
           <p>You do not have to be good.</p>

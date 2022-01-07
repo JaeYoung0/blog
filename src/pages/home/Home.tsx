@@ -1,9 +1,7 @@
 import _ from "lodash";
 import * as S from "./Home.style";
 import DefaultLayout from "src/layouts/DefaultLayout";
-
 import useUser from "@hooks/useUser";
-import MarkdownRenderer from "@components/MarkdownRenderer";
 
 function HomePage() {
   const { me } = useUser();

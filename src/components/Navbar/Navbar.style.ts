@@ -1,13 +1,12 @@
 import styled from "@emotion/styled";
 import { css } from "@emotion/react";
-import { COLORS } from "@constants/colors";
 
 export const Navigation = styled.nav<{
   hideNavbar: boolean;
   background: string;
 }>`
   position: sticky;
-  /* position: fixed; */
+
   top: 0;
   left: 0;
   z-index: 10;
@@ -21,8 +20,6 @@ export const Navigation = styled.nav<{
   height: 4.5rem;
 
   padding: 5rem;
-
-  /* background-color: #99b5d2; */
 
   ${({ background }) => css`
     background: ${background};

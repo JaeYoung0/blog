@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import { css } from "@emotion/react";
 
 export const Container = styled.div`
   background-color: #e2e2e2;

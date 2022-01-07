@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from "react";
-import styled from "@emotion/styled";
-import { css } from "@emotion/react";
+import { useEffect, useState } from "react";
 
 function UpdownGame() {
   const [comNum, setComNum] = useState<number | null>(null);

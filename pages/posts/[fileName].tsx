@@ -1,7 +1,7 @@
 import MarkdownRenderer from "@components/MarkdownRenderer";
 import { GetStaticPaths, GetStaticProps } from "next";
-import DefaultLayout from "src/layouts/DefaultLayout";
-import { getAllPosts, getPostData } from "./helper";
+import DefaultLayout from "@layouts/DefaultLayout";
+import { getAllPosts, getPostData } from "@pages/posts/helper";
 
 interface Props {
   meta: {
@@ -34,7 +34,7 @@ export const getStaticProps: GetStaticProps<
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const posts = await getAllPosts();
-  console.log("@@posts", posts);
+
   return {
     paths: posts.map((post) => {
       return {

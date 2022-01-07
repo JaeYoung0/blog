@@ -1,16 +1,4 @@
-import React from "react";
 import { useRouter } from "next/router";
-
-import dynamic from "next/dynamic";
-
-function Loading() {
-  return <p>loading...</p>;
-}
-
-const DynamicComponent = dynamic(
-  () => import(`@pages/play/components/Paging`),
-  { loading: () => <Loading /> }
-);
 
 function Main() {
   const {

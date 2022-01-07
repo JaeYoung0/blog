@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from "react";
 import styled from "@emotion/styled";
 import useCurrentSection from "@hooks/useCurrentSection";
 
-import { css } from "@emotion/react";
 import _ from "lodash";
 
 const SectionBox = styled.section`
@@ -29,12 +27,8 @@ const arr = [
 function Paging() {
   const classNameOfSections = "main__section";
   const lengthOfSections = arr.length;
-  const {
-    currentSection,
-    currentRatio,
-    handlePlusClick,
-    handleMinusClick,
-  } = useCurrentSection(classNameOfSections, lengthOfSections);
+  const { currentSection, currentRatio, handlePlusClick, handleMinusClick } =
+    useCurrentSection(classNameOfSections, lengthOfSections);
 
   console.log("@@@@currentSection", currentSection, currentRatio);
 

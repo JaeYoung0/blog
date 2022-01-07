@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import { useRef } from "react";
 import * as S from "./CardScatter.style";
 import Head from "next/head";
 
@@ -13,70 +13,70 @@ const CARD_DATA = [
 function CardScatter() {
   const refs = useRef<any[]>([]);
   const bottomRef = useRef(null);
-  useEffect(() => {
-    console.log("@@refs.current", refs.current);
-    resetCards();
-  }, [refs]);
+  // useEffect(() => {
+  //   console.log("@@refs.current", refs.current);
+  //   resetCards();
+  // }, [refs]);
 
-  useEffect(() => {
-    if (!bottomRef.current) return;
-    bottomRef.current.querySelectorAll("button").forEach((item, idx) => {
-      TweenMax.from(item, 0.4, {
-        top: -200,
-        autoAlpha: 0,
-        ease: Power3.easeInOut,
-        delay: idx * 0.1 + 1,
-      });
-    });
-    console.log("@@querySelectorAll", bottomRef.current);
-  }, [bottomRef]);
+  // useEffect(() => {
+  //   if (!bottomRef.current) return;
+  //   bottomRef.current.querySelectorAll("button").forEach((item, idx) => {
+  //     TweenMax.from(item, 0.4, {
+  //       top: -200,
+  //       autoAlpha: 0,
+  //       ease: Power3.easeInOut,
+  //       delay: idx * 0.1 + 1,
+  //     });
+  //   });
+  //   console.log("@@querySelectorAll", bottomRef.current);
+  // }, [bottomRef]);
 
-  const resetCards = () => {
-    TweenMax.killTweensOf(refs.current);
-    refs.current.forEach((item, idx) => {
-      console.log("@@item", item);
+  // const resetCards = () => {
+  //   TweenMax.killTweensOf(refs.current);
+  //   refs.current.forEach((item, idx) => {
+  //     console.log("@@item", item);
 
-      TweenMax.to(item, 1, {
-        top: window.innerHeight / 2 - idx * 40,
-        left: window.innerWidth / 2 + idx * 40 - 200,
-        rotation: 0,
-        ease: Power3.easeInOut,
-        delay: idx * 0.2,
-      });
-    });
-  };
+  //     TweenMax.to(item, 1, {
+  //       top: window.innerHeight / 2 - idx * 40,
+  //       left: window.innerWidth / 2 + idx * 40 - 200,
+  //       rotation: 0,
+  //       ease: Power3.easeInOut,
+  //       delay: idx * 0.2,
+  //     });
+  //   });
+  // };
 
-  const scatterCards = () => {
-    refs.current.forEach((item, idx) => {
-      TweenMax.to(item, 1, {
-        top: Math.random() * window.innerHeight,
-        left: Math.random() * window.innerWidth,
-        rotation: Math.random() * 180,
-        ease: Power4.easeInOut,
-        delay: idx * 0.1,
-      });
-    });
-  };
+  // const scatterCards = () => {
+  //   refs.current.forEach((item, idx) => {
+  //     TweenMax.to(item, 1, {
+  //       top: Math.random() * window.innerHeight,
+  //       left: Math.random() * window.innerWidth,
+  //       rotation: Math.random() * 180,
+  //       ease: Power4.easeInOut,
+  //       delay: idx * 0.1,
+  //     });
+  //   });
+  // };
 
-  const rotateCards = () => {
-    refs.current.forEach((item, idx) => {
-      TweenMax.to(item, 1, {
-        top: Math.random() * (window.innerHeight / 2) + 100,
-        left: Math.random() * (window.innerWidth - 300) + 100,
-        rotationX: "random(-60,60)",
-        rotationY: "random(-60,60)",
-        rotationZ: "random(-90,90)",
-        ease: Power4.easeInOut,
-        delay: "random(0,0.5)",
-      });
-    });
-  };
+  // const rotateCards = () => {
+  //   refs.current.forEach((item, idx) => {
+  //     TweenMax.to(item, 1, {
+  //       top: Math.random() * (window.innerHeight / 2) + 100,
+  //       left: Math.random() * (window.innerWidth - 300) + 100,
+  //       rotationX: "random(-60,60)",
+  //       rotationY: "random(-60,60)",
+  //       rotationZ: "random(-90,90)",
+  //       ease: Power4.easeInOut,
+  //       delay: "random(0,0.5)",
+  //     });
+  //   });
+  // };
 
-  useEffect(() => {
-    window.addEventListener("resize", resetCards);
+  // useEffect(() => {
+  //   window.addEventListener("resize", resetCards);
 
-    return () => window.removeEventListener("resize", resetCards);
-  }, []);
+  // return () => window.removeEventListener("resize", resetCards);
+  // }, []);
 
   return (
     <>
@@ -105,9 +105,9 @@ function CardScatter() {
         </S.CardsWrap>
 
         <S.BottomWrap ref={bottomRef}>
-          <button onClick={scatterCards}>Scatter</button>
+          {/* <button onClick={scatterCards}>Scatter</button>
           <button onClick={resetCards}>Reset</button>
-          <button onClick={rotateCards}>Rotate</button>
+          <button onClick={rotateCards}>Rotate</button> */}
         </S.BottomWrap>
       </S.Container>
     </>

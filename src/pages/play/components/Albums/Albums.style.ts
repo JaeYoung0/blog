@@ -4,7 +4,7 @@ import { css, keyframes } from "@emotion/react";
 // TODO. 클래스 떼었다가 붙였다가 하면 쉬울 것 같은데,
 // page상태를 바꾸면서 대응하니 애니메이션이 잘 안먹는듯?
 
-const fadeIn = keyframes`
+export const fadeIn = keyframes`
 from {
     opacity: 0;
     transform: translateX(0%);
@@ -25,7 +25,7 @@ const rotateAni = keyframes`
     }
 `;
 
-const bounce = keyframes`
+export const bounce = keyframes`
   from, 20%, 53%, 80%, to {
     transform: translate3d(0,0,0);
   }
@@ -63,7 +63,6 @@ export const AlbumSection = styled.section`
 
 export const Disk = styled.div<{ diskColor: string; show: boolean }>`
   position: absolute;
-  /* top: 30%; */
 
   width: 244px;
   height: 244px;
@@ -119,9 +118,8 @@ export const Img = styled.img<{ show: boolean }>`
   top: 0;
   left: 0;
   visibility: hidden;
-  /* transform: translateX(-10%); */
+
   transition: transform 0.2s ease-out;
-  /* transition: opacity 0.1s ease-out; */
 
   opacity: 0.2;
   transform: translateX(20%);

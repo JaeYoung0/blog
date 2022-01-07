@@ -1,4 +1,4 @@
-import { useRecoilState, selector } from "recoil";
+import { useRecoilState } from "recoil";
 import { userAtom } from "src/atoms/auth";
 import * as authService from "@services/auth";
 

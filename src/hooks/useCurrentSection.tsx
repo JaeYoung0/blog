@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import _ from "lodash";
 
 // FIXME: for문 사용하지 말자

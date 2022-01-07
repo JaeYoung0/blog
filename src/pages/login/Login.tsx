@@ -3,7 +3,7 @@ import { css } from "@emotion/react";
 import { useRouter } from "next/router";
 import CloudLayout from "src/layouts/CloudLayout";
 import { useForm } from "react-hook-form";
-import { login, ILoginValues } from "src/services/auth";
+import { ILoginValues } from "src/services/auth";
 import useUser from "@hooks/useUser";
 
 function Login() {

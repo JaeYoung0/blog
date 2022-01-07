@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { css } from "@emotion/react";
-import { calcEffect } from "./tosim";
+import { calcEffect } from "./Tosim";
 import { SECTION_INFO } from "./info.data";
 import _ from "lodash";
 

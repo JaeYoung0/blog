@@ -13,8 +13,7 @@ export const DATA = [
 ];
 
 function WildGeese() {
-  const { currentRatio, currentSection } = useCurrentSection("poem", 4);
-  console.log("@@@@currentSection", currentSection);
+  const { currentSection } = useCurrentSection("poem", 4);
 
   return (
     <S.Container currentSection={currentSection}>

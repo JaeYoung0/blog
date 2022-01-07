@@ -1,1 +1,1 @@
-export { default } from "./tosim";
+export { default } from "./Tosim";

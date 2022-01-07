@@ -16,8 +16,6 @@ import { SECTION_INFO } from "./info.data";
 // live along some distant day into the answer.”
 // ― Rainer Maria Rilke
 
-type EffectName = "opacity";
-
 export const calcEffect = (
   name: string,
   currentRatio: number,

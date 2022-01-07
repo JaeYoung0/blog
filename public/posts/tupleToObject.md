@@ -1,4 +1,5 @@
 ---
+id: 3
 title: typescript Challenge 3
 description: "Tuple to Object"
 date: "2021-01-06"

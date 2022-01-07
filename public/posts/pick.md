@@ -1,4 +1,5 @@
 ---
+id: 1
 title: typescript Challenge 1
 description: "Pick"
 date: "2021-01-06"

@@ -1,4 +1,5 @@
 ---
+id: 2
 title: typescript Challenge 2
 description: "Readonly"
 date: "2021-01-06"
@@ -7,8 +8,11 @@ date: "2021-01-06"
 # 2. Readonly
 
 - readonly Properties
+
   1. Property앞에 readonly를 붙이면 그 Property는 쓰기 불가상태가 됨.
+
      - code
+
        ```tsx
        interface SomeType {
          readonly prop: string;
@@ -22,8 +26,11 @@ date: "2021-01-06"
          obj.prop = "hello"; // error: Cannot assign to 'prop' because it is a read-only property.
        }
        ```
+
   - readonly를 사용한다고해서 그 값이 완전히 불변이라는 의미는 아님. internal contents가 바뀔 수 없다는걸 의미하지도 않음. it just means the property itself can’t be re-written to
+
     - code
+
       ```jsx
       interface Home {
         readonly resident: { name: string; age: number };
@@ -42,8 +49,11 @@ date: "2021-01-06"
         };
       }
       ```
+
   - `readonly` properties can also change via aliasing
+
     - [code](https://www.typescriptlang.org/play?#code/JYOwLgpgTgZghgYwgAgArQM4HsTIN4BQyyIcAthAFzIZhSgDmA3EcnA1SQK5kBG0LAL4ECoSLEQoAShDgATHABsAnuijZchYlFkKQKkuU616IZqx3ylyth2oge-KEJGKIYZAHd6YOLzdqGtSBOMgAvPispBTUAEQhuACyCAnwSLEANKzsnAAsAExZgiwEAPSlXlhQANYYBG4elnoqCdQyVvqqmKER3sC+-hAJJQQIONhuAHSKWAwAFE3WCZM5AJRMyOXIAA6mYBjIAOQFhwR9AwHdICscANS3LGMgExDTswu6S1c3EOubFbsxAdjgBmQ5AA)
+
       ```tsx
       interface Person {
         name: string;

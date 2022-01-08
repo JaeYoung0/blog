@@ -10,8 +10,11 @@ export default function Posts({ posts }: PostsPageProps) {
   return (
     <DefaultLayout>
       <S.Outer>
-        {posts.map((post) => (
-          <S.PostThumbnail onClick={() => push(`/posts/${post.fileName}`)}>
+        {posts.map((post, idx) => (
+          <S.PostThumbnail
+            key={idx}
+            onClick={() => push(`/posts/${post.fileName}`)}
+          >
             <S.Title>{post.meta.title}</S.Title>
             <S.Description>{post.meta.description}</S.Description>
           </S.PostThumbnail>
@@ -23,6 +26,7 @@ export default function Posts({ posts }: PostsPageProps) {
 
 export const getStaticProps: GetStaticProps = async () => {
   const posts = await getAllPosts();
+
   return {
     props: {
       posts,

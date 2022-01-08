@@ -2,7 +2,7 @@ import useNavbar from "@hooks/useNavbar";
 import Link from "next/link";
 import * as S from "./Navbar.style";
 import Hamburger from "@components/Hamburger";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 
@@ -11,14 +11,22 @@ import { useRouter } from "next/router";
 
 import useUser from "@hooks/useUser";
 
-const Drawer = styled.ol``;
-
 const TopMenuWrapper = styled.div``;
 
 export default function Navbar() {
   const { hideNavbar } = useNavbar();
   const [isOpened, setIsOpened] = useState(false);
-  const handleHamburgerClick = () => setIsOpened(!isOpened);
+  const handleHamburgerClick = () => {
+    setIsOpened(!isOpened);
+  };
+
+  useEffect(() => {
+    if (isOpened) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "initial";
+    }
+  }, [isOpened]);
 
   const router = useRouter();
   const handleDrawerMenuClick = (page: string) => {
@@ -82,31 +90,12 @@ export default function Navbar() {
         </div>
       </TopMenuWrapper>
 
-      <Drawer
+      <S.Drawer
         css={css`
-          background-color: black;
-
-          position: fixed;
-          top: 0;
-          left: 0;
-
           transform: ${isOpened ? `translateX(0%)` : `translateX(-100%)`};
-          transition: transform 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
-          width: 100%;
-          min-height: 100vh;
-          padding: 10rem;
-          text-align: center;
-
-          li {
-            font-size: 2rem;
-            line-height: 4;
-            color: skyblue;
-            cursor: pointer;
-          }
         `}
       >
         <li onClick={() => router.push("/")}>블로그</li>
-        {/* <li onClick={() => handleDrawerMenuClick("cloud")}>구름</li> */}
 
         {me ? (
           <li
@@ -120,7 +109,7 @@ export default function Navbar() {
         ) : (
           <li onClick={() => handleDrawerMenuClick("login")}>로그인</li>
         )}
-      </Drawer>
+      </S.Drawer>
     </S.Navigation>
   );
 }

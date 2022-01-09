@@ -1,4 +1,4 @@
-import { MEDIA_QUERY_ARR } from "@styles/MediaQuery";
+import { SCREEN_BREAKPOINT } from "@styles/MediaQuery";
 import styled from "@emotion/styled";
 import { css } from "@emotion/react";
 
@@ -18,7 +18,7 @@ export const HamburgerButton = styled.div`
 
   z-index: 100;
 
-  ${MEDIA_QUERY_ARR("large")} {
+  ${SCREEN_BREAKPOINT("large")} {
     display: none;
   }
 `;

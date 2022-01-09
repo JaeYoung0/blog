@@ -9,7 +9,7 @@ const breakpoints = {
 };
 
 type BP = keyof typeof breakpoints;
-export const MEDIA_QUERY_ARR = (name: BP) =>
+export const SCREEN_BREAKPOINT = (name: BP) =>
   `@media (min-width: ${breakpoints[name]}px)`;
 
 const DEFAULT_FONT_SIZE = 10;
@@ -19,11 +19,11 @@ const style = css`
   html {
     font-size: 10px;
 
-    ${MEDIA_QUERY_ARR("smaller")} {
+    ${SCREEN_BREAKPOINT("smaller")} {
       font-size: calc((${DEFAULT_FONT_SIZE} / ${DEFAULT_DEVICE_WIDTH}) * 100vw);
     }
 
-    ${MEDIA_QUERY_ARR("small")} {
+    ${SCREEN_BREAKPOINT("small")} {
       font-size: ${DEFAULT_FONT_SIZE}px;
     }
   }

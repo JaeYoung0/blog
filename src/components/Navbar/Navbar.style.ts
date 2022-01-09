@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import { css } from "@emotion/react";
+import { SCREEN_BREAKPOINT } from "@styles/MediaQuery";
 
 export const Drawer = styled.ol`
   background-color: black;
@@ -22,6 +23,40 @@ export const Drawer = styled.ol`
   }
 `;
 
+export const TopMenuWrapper = styled.div`
+  max-width: 120rem;
+
+  ${SCREEN_BREAKPOINT("large")} {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+  }
+
+  span {
+    font-size: 2.5rem;
+    color: skyblue;
+    cursor: pointer;
+  }
+`;
+
+export const Menus = styled.div`
+  ${SCREEN_BREAKPOINT("smaller")} {
+    display: none;
+  }
+
+  ${SCREEN_BREAKPOINT("large")} {
+    display: inline-block;
+  }
+
+  span {
+    font-size: 1.8rem;
+    color: skyblue;
+    margin-left: 5rem;
+    cursor: pointer;
+  }
+`;
+
 export const Navigation = styled.nav<{
   hideNavbar: boolean;
   background: string;
@@ -38,9 +73,7 @@ export const Navigation = styled.nav<{
 
   align-items: center;
   width: 100%;
-  height: 4.5rem;
-
-  padding: 5rem;
+  height: 7rem;
 
   ${({ background }) => css`
     background: ${background};
@@ -52,7 +85,7 @@ export const Navigation = styled.nav<{
     margin: 0 10px;
   }
 
-  ${({ hideNavbar }) =>
+  /* ${({ hideNavbar }) =>
     hideNavbar &&
     css`
       transform: translateY(-100%);
@@ -64,5 +97,5 @@ export const Navigation = styled.nav<{
     css`
       transform: translateY(0%);
       transition: transform 0.5s ease-out;
-    `}
+    `} */
 `;

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { MEDIA_QUERY_ARR } from "@styles/MediaQuery";
+import { SCREEN_BREAKPOINT } from "@styles/MediaQuery";
 import { keyframes } from "@emotion/react";
 
 const 흘러라구름아 = keyframes`
@@ -50,7 +50,7 @@ const FormWrapper = styled.div`
 
   text-align: center;
 
-  ${MEDIA_QUERY_ARR("large")} {
+  ${SCREEN_BREAKPOINT("large")} {
     width: 80rem;
 
     padding: 10rem 20rem;

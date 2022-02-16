@@ -1,4 +1,4 @@
-import { MEDIA_QUERY_ARR } from "@styles/MediaQuery";
+import { SCREEN_BREAKPOINT } from "@styles/MediaQuery";
 import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
@@ -6,7 +6,7 @@ export const Wrapper = styled.div`
     margin-top: 3rem;
   }
 
-  ${MEDIA_QUERY_ARR("large")} {
+  ${SCREEN_BREAKPOINT("large")} {
     & ~ & {
       margin-top: 5rem;
     }
@@ -26,7 +26,7 @@ export const Input = styled.input`
     background: transparent;
   }
 
-  ${MEDIA_QUERY_ARR("large")} {
+  ${SCREEN_BREAKPOINT("large")} {
     font-size: 2rem;
   }
 `;

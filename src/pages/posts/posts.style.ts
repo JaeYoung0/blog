@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { MEDIA_QUERY_ARR } from "@styles/MediaQuery";
+import { SCREEN_BREAKPOINT } from "@styles/MediaQuery";
 
 export const PostThumbnail = styled.article`
   background: #151519;
@@ -10,11 +10,11 @@ export const PostThumbnail = styled.article`
 
   cursor: pointer;
 
-  ${MEDIA_QUERY_ARR("small")} {
+  ${SCREEN_BREAKPOINT("small")} {
     max-width: 50rem;
   }
 
-  ${MEDIA_QUERY_ARR("large")} {
+  ${SCREEN_BREAKPOINT("large")} {
     max-width: 70rem;
   }
 

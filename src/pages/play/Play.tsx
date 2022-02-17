@@ -1,5 +1,6 @@
 import CardScatter from "./components/CardScatter";
 import Skybox from "./components/Skybox";
+import Earth from "./components/Earth";
 
 function Play() {
   return (
@@ -14,7 +15,8 @@ function Play() {
       {/* <Albums /> */}
       {/* <Spinner strokeColor="#2959ff" /> */}
       {/* <CardScatter /> */}
-      <Skybox />
+      <Earth />
+      {/* <Skybox /> */}
     </>
   );
 }

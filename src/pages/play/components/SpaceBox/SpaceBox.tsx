@@ -1,5 +1,5 @@
 import { Suspense, useRef } from "react";
-import * as S from "./Earth.style";
+import * as S from "./SpaceBox.style";
 import { Canvas, MeshProps, useFrame, useLoader } from "@react-three/fiber";
 
 import EarthLightsMap from "./assets/textures/10k_earthlights.jpg";
@@ -41,7 +41,7 @@ function GlobeAndStars() {
       <ambientLight intensity={0.5} />
       <Stars radius={300} depth={100} count={5000} saturation={50} factor={5} />
 
-      <mesh ref={earthRef} position={[0, 0, 0]}>
+      <mesh ref={earthRef} position={[0, 0, -5]}>
         <sphereGeometry args={[1, 32, 32]} />
 
         {/* meshPhongMaterial: 반사 하이라이트가 있는 광택있는 표면 재질을 표현, 빛이 없으면 그냥 검은색으로 보임 */}
@@ -67,7 +67,7 @@ function GlobeAndStars() {
         />
       </mesh>
 
-      <mesh ref={moonRef} position={[-1, 0, -5]}>
+      <mesh ref={moonRef} position={[2, 0, -10]}>
         <sphereGeometry args={[1, 32, 32]} />
         <meshPhongMaterial />
         <meshStandardMaterial map={moonMap} normalMap={moonMap} />

@@ -10,7 +10,8 @@
       "@constants/*": ["src/constants/*"],
       "@icons/*": ["src/icons/*"],
       "@services/*": ["src/services/*"],
-      "@atoms/*": ["src/atoms/*"]
+      "@atoms/*": ["src/atoms/*"],
+      "@public/*": ["public/*"]
     },
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],

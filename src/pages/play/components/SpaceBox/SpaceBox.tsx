@@ -10,7 +10,10 @@ import * as THREE from "three";
 import { Euler, TextureLoader } from "three";
 
 import { OrbitControls, Stars } from "@react-three/drei";
-
+import fragmentShader from "./shaders/fragment.glsl";
+import vertexShader from "./shaders/vertex.glsl";
+import atmosphereFragmentShader from "./shaders/atmosphereFragment.glsl";
+import atmosphereVertex from "./shaders/atmosphereVertex.glsl";
 /**
  * 공간 - Scene
  * 피사체 : 부피, 질감 - Mesh : Geometry, Material
@@ -18,6 +21,18 @@ import { OrbitControls, Stars } from "@react-three/drei";
  * 빛 - Light
  */
 function GlobeAndStars() {
+  const nextImgSrc = async (path: string) => {
+    // public 폴더가 아니라 인접폴더에서 불러오고 싶다.
+    // 만약에 이걸 쓰다면, promise를 어떻게 풀어낼까
+    const result = await import(
+      `@pages/play/components/SpaceBox/assets/textures/${path}`
+    );
+
+    return result.default.src;
+  };
+
+  nextImgSrc("earth_nasa.jpeg");
+
   const [lightsMap, cloudsMap, specularMap, moonMap] = useLoader(
     TextureLoader,
     [EarthLightsMap.src, EarthCloudsMap.src, EarthSpecularMap.src, MoonMap.src]
@@ -76,12 +91,44 @@ function GlobeAndStars() {
   );
 }
 
+function GlobeWithShaders() {
+  const earthRef = useRef<MeshProps>();
+
+  // shader는 raw-loader로 string만 읽어온다.
+  return (
+    <>
+      <mesh position={[-2, 3, -10]} ref={earthRef}>
+        <sphereGeometry args={[1, 50, 50]} />
+        <shaderMaterial
+          fragmentShader={fragmentShader}
+          vertexShader={vertexShader}
+          uniforms={{
+            globeTexture: {
+              value: new THREE.TextureLoader().load("textures/earth_nasa.jpeg"),
+            },
+          }}
+        />
+      </mesh>
+      <mesh position={[-2, 3, -10]} scale={[1.1, 1.1, 1.1]}>
+        <sphereGeometry args={[1, 50, 50]} />
+        <shaderMaterial
+          fragmentShader={atmosphereFragmentShader}
+          vertexShader={atmosphereVertex}
+          blending={THREE.AdditiveBlending}
+          side={THREE.BackSide}
+        />
+      </mesh>
+    </>
+  );
+}
+
 function SpaceBox() {
   return (
     <S.CanvasContainer>
       <Canvas>
         <Suspense fallback={null}>
           <GlobeAndStars />
+          <GlobeWithShaders />
         </Suspense>
       </Canvas>
     </S.CanvasContainer>

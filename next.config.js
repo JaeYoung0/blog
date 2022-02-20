@@ -4,6 +4,12 @@ const nextConfig = {
     if (!isServer) {
       config.resolve.fallback.fs = false;
     }
+    config.module.rules.push({
+      test: /\.(glsl|vs|fs|vert|frag)$/,
+      exclude: /node_modules/,
+
+      use: ["raw-loader"],
+    });
 
     return config;
   },

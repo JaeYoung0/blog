@@ -16,8 +16,6 @@ interface Props {
   imgUrl: string;
 }
 export default function AvatarMesh({ position, name, imgUrl }: Props) {
-  console.log("@@imgUrl", imgUrl);
-
   return (
     <>
       <mesh position={position}>
@@ -35,12 +33,13 @@ export default function AvatarMesh({ position, name, imgUrl }: Props) {
                   width: 50px;
                   height: 50px;
                   border-radius: 50%;
+                  border: 2px solid #7e71f3;
                 `}
               />
               <S.Name
                 css={css`
                   position: absolute;
-                  bottom: -2rem;
+                  bottom: -3.5rem;
                   width: 100%;
                   text-align: center;
                 `}

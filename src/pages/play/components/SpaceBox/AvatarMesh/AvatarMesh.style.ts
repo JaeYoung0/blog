@@ -33,30 +33,32 @@ export const ripple = keyframes`
  0% {
   width: 75px;
   height: 75px;
-  /* filter: blur(0px); */
   border: 2px solid #7e71f3;
-
-
   }
+
   100% {
     width: 80px;
     height: 80px;
-    /* filter: blur(2px); */
     border: 2px solid #7e71f3;
-
   }
 `;
 
 export const AvatarWrapper = styled.div`
-  /* ${center} */
   width: 50px;
   height: 50px;
   border-radius: 50%;
 
-  /* ${glowing} */
-
-  /* animation: ${ripple} 1s linear infinite alternate; */
   z-index: 10;
+
+  &::after {
+    content: "";
+    ${center}
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 3px solid #7e71f3;
+    filter: blur(2px);
+  }
 
   div {
     position: relative;
@@ -64,12 +66,6 @@ export const AvatarWrapper = styled.div`
 `;
 
 export const Name = styled.p`
-  /* width: 100%;
-  height: 100%;
-  ${center} */
-
-  /* position: absolute; */
-  /* bottom: 0; */
   font-size: 13px;
   color: #fff;
 `;

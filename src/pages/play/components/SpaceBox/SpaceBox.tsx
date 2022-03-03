@@ -37,9 +37,9 @@ function SpaceBox() {
         <Suspense fallback={null}>
           <ambientLight intensity={0.5} />
           <Stars
-            radius={100}
-            depth={200}
-            count={1500}
+            radius={20}
+            depth={300}
+            count={1000}
             saturation={50}
             factor={5}
           />
@@ -64,8 +64,8 @@ function SpaceBox() {
             enableZoom
             enablePan
             enableRotate
-            zoomSpeed={0.6}
-            panSpeed={0.6}
+            zoomSpeed={1.5}
+            panSpeed={1.5}
             rotateSpeed={1}
           />
         </Suspense>

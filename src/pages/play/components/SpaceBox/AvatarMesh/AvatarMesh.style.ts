@@ -51,7 +51,7 @@ export const AvatarWrapper = styled.div`
   width: 50px;
   height: 50px;
 
-  ${glowing}
+  /* ${glowing} */
 
   z-index: 10;
 

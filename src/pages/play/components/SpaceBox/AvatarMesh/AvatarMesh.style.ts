@@ -33,14 +33,15 @@ export const ripple = keyframes`
  0% {
   width: 75px;
   height: 75px;
-  filter: blur(0px);
+  /* filter: blur(0px); */
   border: 2px solid #7e71f3;
+
 
   }
   100% {
     width: 80px;
     height: 80px;
-    filter: blur(2px);
+    /* filter: blur(2px); */
     border: 2px solid #7e71f3;
 
   }
@@ -50,9 +51,11 @@ export const AvatarWrapper = styled.div`
   /* ${center} */
   width: 50px;
   height: 50px;
+  border-radius: 50%;
 
   /* ${glowing} */
 
+  /* animation: ${ripple} 1s linear infinite alternate; */
   z-index: 10;
 
   div {

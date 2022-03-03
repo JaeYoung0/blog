@@ -49,7 +49,7 @@ function SpaceBox() {
             imgUrl={randomImg()}
             position={[0, 0, 0]}
           />
-          {Array(40)
+          {Array(15)
             .fill(0)
             .map((_, idx) => (
               <AvatarMesh

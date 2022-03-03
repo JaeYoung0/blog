@@ -36,13 +36,13 @@ function SpaceBox() {
       <Canvas>
         <Suspense fallback={null}>
           <ambientLight intensity={0.5} />
-          <Stars
-            radius={300}
+          {/* <Stars
+            radius={100}
             depth={100}
-            count={5000}
+            count={500}
             saturation={50}
-            factor={5}
-          />
+            // factor={5}
+          /> */}
 
           <AvatarMesh
             name="재영의 펫"

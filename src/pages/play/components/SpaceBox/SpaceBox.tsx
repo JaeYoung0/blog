@@ -1,8 +1,9 @@
-import { Suspense } from "react";
+import { Suspense, useRef, useState } from "react";
 import * as S from "./SpaceBox.style";
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls, Stars } from "@react-three/drei";
+import { Stars, OrbitControls } from "@react-three/drei";
 import AvatarMesh from "./AvatarMesh";
+import * as THREE from "three";
 
 const randomNum = (size: number) => {
   const prefix = Math.random() > 0.5 ? 1 : -1;
@@ -30,7 +31,29 @@ const randomImg = () => {
   return `/pets/pet${1 + Math.floor(Math.random() * 11)}.png`;
 };
 
+type MockUserModel = {
+  id: number;
+  position: [number, number, number];
+  name: string;
+  imgUrl: string;
+};
+
+const MOCK_USERS: MockUserModel[] = Array(15)
+  .fill(0)
+  .map((_, idx) => ({
+    id: idx,
+    position: [randomNum(10), randomNum(10), randomNum(10)],
+    name: `${randomName()}${idx}`,
+    imgUrl: randomImg(),
+  }));
+
 function SpaceBox() {
+  const [targetPos, setTargetPos] = useState<THREE.Vector3Tuple>([0, 0, 0]);
+
+  const swapCamera = (position: THREE.Vector3Tuple) => {
+    setTargetPos(position);
+  };
+
   return (
     <S.CanvasContainer>
       <Canvas>
@@ -48,24 +71,30 @@ function SpaceBox() {
             name="재영의 펫"
             imgUrl={randomImg()}
             position={[0, 0, 0]}
+            swapCamera={swapCamera}
           />
-          {Array(15)
-            .fill(0)
-            .map((_, idx) => (
-              <AvatarMesh
-                key={idx}
-                name={randomName()}
-                position={[randomNum(10), randomNum(10), randomNum(10)]}
-                imgUrl={randomImg()}
-              />
-            ))}
+
+          {MOCK_USERS.map((user) => (
+            <AvatarMesh
+              key={user.id}
+              name={user.name}
+              position={user.position}
+              imgUrl={user.imgUrl}
+              swapCamera={swapCamera}
+            />
+          ))}
 
           <OrbitControls
+            minDistance={5}
+            maxDistance={10}
+            target={targetPos}
             enableZoom
             enablePan
             enableRotate
-            zoomSpeed={1.5}
-            panSpeed={1.5}
+            autoRotate
+            autoRotateSpeed={0.2}
+            zoomSpeed={0.7}
+            panSpeed={0.7}
             rotateSpeed={1}
           />
         </Suspense>

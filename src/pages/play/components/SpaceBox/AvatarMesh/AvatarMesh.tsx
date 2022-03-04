@@ -14,16 +14,27 @@ interface Props {
   name: string;
   position: [number, number, number];
   imgUrl: string;
+  swapCamera: (position: THREE.Vector3Tuple) => void;
 }
-export default function AvatarMesh({ position, name, imgUrl }: Props) {
+export default function AvatarMesh({
+  position,
+  name,
+  imgUrl,
+  swapCamera,
+}: Props) {
   return (
     <>
       <mesh position={position}>
-        <Html distanceFactor={10}>
+        <Html
+        // distanceFactor={10}
+        >
           <div
-            onClick={() =>
-              alert(`안녕 내 위치는 ${position}이고 이름은 ${name}이야.`)
-            }
+            onClick={() => {
+              const go = confirm(`${name}으로 이동하시겠어요?`);
+              if (go) {
+                swapCamera(position);
+              }
+            }}
           >
             <RoundedFrame>
               <img

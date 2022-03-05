@@ -47,6 +47,13 @@ const MOCK_USERS: MockUserModel[] = Array(15)
     imgUrl: randomImg(),
   }));
 
+const MOCK_ME: MockUserModel = {
+  id: 117,
+  position: [0, 0, 0],
+  name: "재영",
+  imgUrl: randomImg(),
+};
+
 function SpaceBox() {
   const [targetPos, setTargetPos] = useState<THREE.Vector3Tuple>([0, 0, 0]);
 
@@ -68,9 +75,9 @@ function SpaceBox() {
           />
 
           <AvatarMesh
-            name="재영의 펫"
-            imgUrl={randomImg()}
-            position={[0, 0, 0]}
+            name={MOCK_ME["name"]}
+            imgUrl={MOCK_ME["imgUrl"]}
+            position={MOCK_ME["position"]}
             swapCamera={swapCamera}
           />
 

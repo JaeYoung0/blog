@@ -41,8 +41,8 @@ export default function AvatarMesh({
                 src={imgUrl}
                 css={css`
                   ${S.center}
-                  width: 50px;
-                  height: 50px;
+                  width: 35px;
+                  height: 35px;
                   border-radius: 50%;
                   border: 2px solid #7e71f3;
                 `}
@@ -50,9 +50,10 @@ export default function AvatarMesh({
               <S.Name
                 css={css`
                   position: absolute;
-                  bottom: -3.5rem;
+                  bottom: -2rem;
                   width: 100%;
                   text-align: center;
+                  font-size: 12px;
                 `}
               >
                 {name}

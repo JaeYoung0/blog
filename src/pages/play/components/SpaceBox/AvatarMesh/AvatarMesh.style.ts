@@ -48,14 +48,13 @@ export const AvatarWrapper = styled.div`
   width: 50px;
   height: 50px;
   border-radius: 50%;
-
   z-index: 10;
 
   &::after {
     content: "";
     ${center}
-    width: 70px;
-    height: 70px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     border: 3px solid #7e71f3;
     filter: blur(2px);

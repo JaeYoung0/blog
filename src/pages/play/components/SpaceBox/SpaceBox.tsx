@@ -79,6 +79,7 @@ function SpaceBox() {
             imgUrl={MOCK_ME["imgUrl"]}
             position={MOCK_ME["position"]}
             swapCamera={swapCamera}
+            me
           />
 
           {MOCK_USERS.map((user) => (

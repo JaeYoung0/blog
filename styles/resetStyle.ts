@@ -2,25 +2,32 @@ import { css } from "@emotion/react";
 
 export const resetStyle = css`
   /* font-face */
-  @font-face {
-    font-family: "Cafe24SsurroundAir";
-    src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24SsurroundAir.woff")
-      format("woff");
-    font-weight: normal;
-    font-style: normal;
-  }
 
+  /*
+ * KoPub Batang (Korean) http://www.google.com/fonts/earlyaccess
+ */
   @font-face {
-    font-family: "NanumBarunGothic";
+    font-family: "KoPub Batang";
+    font-style: normal;
+    font-weight: 300;
+
+    src: url("//fonts.gstatic.com/ea/kopubbatang/v3/KoPubBatang-Light.woff")
+      format("woff");
+  }
+  @font-face {
+    font-family: "KoPub Batang";
     font-style: normal;
     font-weight: 400;
-    src: url("//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot");
-    src: url("//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot?#iefix")
-        format("embedded-opentype"),
-      url("//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.woff")
-        format("woff"),
-      url("//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.ttf")
-        format("truetype");
+    src: url("//fonts.gstatic.com/ea/kopubbatang/v3/KoPubBatang-Regular.woff2")
+      format("woff2");
+  }
+  @font-face {
+    font-family: "KoPub Batang";
+    font-style: normal;
+    font-weight: 700;
+
+    src: url("//fonts.gstatic.com/ea/kopubbatang/v3/KoPubBatang-Bold.woff2")
+      format("woff2");
   }
 
   /* Eric Meyer - reset style */
@@ -155,7 +162,7 @@ export const resetStyle = css`
   }
 
   html {
-    font-family: NanumBarunGothic;
+    font-family: "KoPub Batang";
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   }
 

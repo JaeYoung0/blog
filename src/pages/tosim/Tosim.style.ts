@@ -20,8 +20,6 @@ export const Section = styled.section<{
   /* border: 1px solid red; */
 
   h1 {
-    /* font-style: ; */
-    /* font-family: NanumBarunGothic; */
     font-size: 4.5rem;
     text-align: center;
     padding-top: 50vh;

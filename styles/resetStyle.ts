@@ -1,28 +1,6 @@
 import { css } from "@emotion/react";
 
-export const resetStyle = css`
-  /* font-face */
-  @font-face {
-    font-family: "Cafe24SsurroundAir";
-    src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24SsurroundAir.woff")
-      format("woff");
-    font-weight: normal;
-    font-style: normal;
-  }
-
-  @font-face {
-    font-family: "NanumBarunGothic";
-    font-style: normal;
-    font-weight: 400;
-    src: url("//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot");
-    src: url("//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot?#iefix")
-        format("embedded-opentype"),
-      url("//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.woff")
-        format("woff"),
-      url("//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.ttf")
-        format("truetype");
-  }
-
+const resetStyle = css`
   /* Eric Meyer - reset style */
   html,
   body,
@@ -149,13 +127,12 @@ export const resetStyle = css`
     border-spacing: 0;
   }
 
-  /* my styles */
+  /* my reset styles */
   * {
     box-sizing: border-box;
   }
 
   html {
-    font-family: NanumBarunGothic;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   }
 
@@ -169,3 +146,5 @@ export const resetStyle = css`
     text-decoration: none;
   }
 `;
+
+export default resetStyle;

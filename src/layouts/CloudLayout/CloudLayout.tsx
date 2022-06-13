@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { SCREEN_BREAKPOINT } from "@styles/MediaQuery";
+import { SCREEN_BREAKPOINT } from "@styles/mediaQuery";
 import { keyframes } from "@emotion/react";
 
 const 흘러라구름아 = keyframes`

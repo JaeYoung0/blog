@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { css } from "@emotion/react";
-import { SCREEN_BREAKPOINT } from "@styles/MediaQuery";
+import { SCREEN_BREAKPOINT } from "@styles/mediaQuery";
 
 export const Drawer = styled.ol`
   background-color: black;
@@ -32,21 +32,11 @@ export const TopMenuWrapper = styled.div`
     align-items: center;
     width: 100%;
   }
-
-  span {
-    font-size: 2.5rem;
-    color: skyblue;
-    cursor: pointer;
-  }
 `;
 
 export const Menus = styled.div`
-  ${SCREEN_BREAKPOINT("smaller")} {
+  ${SCREEN_BREAKPOINT("large") || SCREEN_BREAKPOINT("XLarge")} {
     display: none;
-  }
-
-  ${SCREEN_BREAKPOINT("large")} {
-    display: inline-block;
   }
 
   span {
@@ -54,6 +44,19 @@ export const Menus = styled.div`
     color: skyblue;
     margin-left: 5rem;
     cursor: pointer;
+  }
+`;
+
+export const Logo = styled.span`
+  font-family: "SUIT";
+  font-size: 1.8rem;
+  font-weight: 700;
+
+  color: skyblue;
+  cursor: pointer;
+
+  ${SCREEN_BREAKPOINT("large")} {
+    font-size: 2.2rem;
   }
 `;
 
@@ -68,11 +71,12 @@ export const Navigation = styled.nav<{
   z-index: 10;
 
   display: flex;
-  justify-content: space-between;
-  justify-content: center;
+  justify-content: flex-start;
 
   align-items: center;
   width: 100%;
+  max-width: 70rem;
+  margin: 0 auto;
   height: 7rem;
 
   ${({ background }) => css`

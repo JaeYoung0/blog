@@ -1,12 +1,12 @@
 import styled from "@emotion/styled";
-import { SCREEN_BREAKPOINT } from "@styles/MediaQuery";
+import { SCREEN_BREAKPOINT } from "@styles/mediaQuery";
 
 export const PostThumbnail = styled.article`
   background: #151519;
   padding: 3rem;
   width: 100%;
   max-width: 37.5rem;
-  border-radius: 16px;
+  border-radius: 10px;
 
   cursor: pointer;
 
@@ -24,17 +24,28 @@ export const PostThumbnail = styled.article`
 `;
 
 export const Title = styled.h2`
-  font-size: 2rem;
+  font-family: "SUIT";
+  font-size: 1.8rem;
+  font-weight: bold;
   color: #c9d1d9;
   margin-bottom: 2rem;
 `;
 
 export const Description = styled.p`
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   color: #95a1b2;
+  line-height: 1.5;
+
+  margin-bottom: 1rem;
 
   /* FIXME */
   /* Error: Component selectors can only be used in conjunction with @emotion/babel-plugin.*/
+`;
+
+export const ReadMore = styled.p`
+  font-family: "SUIT";
+  font-size: 1.4rem;
+  color: #666666;
 `;
 
 export const Outer = styled.section`

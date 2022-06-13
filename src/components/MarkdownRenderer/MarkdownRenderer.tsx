@@ -13,9 +13,11 @@ function MarkdownRenderer({ markdownContent }: Props) {
       <S.Wrapper>
         <ReactMarkdown
           className="markdown-body"
-          children={markdownContent}
+          // children={markdownContent}
           rehypePlugins={[rehypePrism]}
-        />
+        >
+          {markdownContent}
+        </ReactMarkdown>
       </S.Wrapper>
     </>
   );

@@ -1,4 +1,4 @@
-import { SCREEN_BREAKPOINT } from "@styles/MediaQuery";
+import { SCREEN_BREAKPOINT } from "@styles/mediaQuery";
 import styled from "@emotion/styled";
 import { css } from "@emotion/react";
 

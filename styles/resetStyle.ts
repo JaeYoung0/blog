@@ -1,35 +1,6 @@
 import { css } from "@emotion/react";
 
-export const resetStyle = css`
-  /* font-face */
-
-  /*
- * KoPub Batang (Korean) http://www.google.com/fonts/earlyaccess
- */
-  @font-face {
-    font-family: "KoPub Batang";
-    font-style: normal;
-    font-weight: 300;
-
-    src: url("//fonts.gstatic.com/ea/kopubbatang/v3/KoPubBatang-Light.woff")
-      format("woff");
-  }
-  @font-face {
-    font-family: "KoPub Batang";
-    font-style: normal;
-    font-weight: 400;
-    src: url("//fonts.gstatic.com/ea/kopubbatang/v3/KoPubBatang-Regular.woff2")
-      format("woff2");
-  }
-  @font-face {
-    font-family: "KoPub Batang";
-    font-style: normal;
-    font-weight: 700;
-
-    src: url("//fonts.gstatic.com/ea/kopubbatang/v3/KoPubBatang-Bold.woff2")
-      format("woff2");
-  }
-
+const resetStyle = css`
   /* Eric Meyer - reset style */
   html,
   body,
@@ -156,13 +127,12 @@ export const resetStyle = css`
     border-spacing: 0;
   }
 
-  /* my styles */
+  /* my reset styles */
   * {
     box-sizing: border-box;
   }
 
   html {
-    font-family: "KoPub Batang";
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   }
 
@@ -176,3 +146,5 @@ export const resetStyle = css`
     text-decoration: none;
   }
 `;
+
+export default resetStyle;

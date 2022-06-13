@@ -33,18 +33,12 @@ export default function Navbar() {
 
   return (
     <S.Navigation hideNavbar={hideNavbar} background={"#222222"}>
-      <Hamburger open={isOpened} onClick={handleHamburgerClick} />
+      {/* <Hamburger open={isOpened} onClick={handleHamburgerClick} /> */}
 
       <S.TopMenuWrapper>
         <Link href="/posts">
-          <span>Hinu</span>
+          <S.Logo>Jay Young</S.Logo>
         </Link>
-
-        <S.Menus>
-          <Link href="/login">
-            <span>로그인</span>
-          </Link>
-        </S.Menus>
       </S.TopMenuWrapper>
 
       <S.Drawer

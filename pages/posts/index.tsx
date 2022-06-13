@@ -17,6 +17,7 @@ export default function Posts({ posts }: PostsPageProps) {
           >
             <S.Title>{post.meta.title}</S.Title>
             <S.Description>{post.meta.description}</S.Description>
+            <S.ReadMore>더 읽기{` >> `}</S.ReadMore>
           </S.PostThumbnail>
         ))}
       </S.Outer>

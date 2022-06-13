@@ -1,4 +1,4 @@
-import { SCREEN_BREAKPOINT } from "@styles/MediaQuery";
+import { SCREEN_BREAKPOINT } from "@styles/mediaQuery";
 import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`

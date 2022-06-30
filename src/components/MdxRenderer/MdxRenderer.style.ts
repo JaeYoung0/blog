@@ -132,6 +132,10 @@ export const Wrapper = styled.article`
     padding: 4.5rem;
   }
 
+  p {
+    font-size: 20px;
+  }
+
   @media (max-width: 767px) {
     .markdown-body {
       padding: 1.5rem;

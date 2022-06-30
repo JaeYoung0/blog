@@ -1,0 +1,63 @@
+---
+id: 1
+title: typescript Challenge 1
+description: "Pick"
+date: "2021-01-06"
+---
+
+# 1. Pick
+
+[challenge1](https://github.com/type-challenges/type-challenges/blob/master/questions/4-easy-pick/README.md)
+
+- The **keyof** type operator
+
+  1. `keyof` 연산자는 object type의 key들로 union 타입을 만든다
+
+     - The following type `P` is the same type as `“x” | “y”`
+
+       ```jsx
+       type Point = { x: number; y: number };
+       type P = keyof Point; // “x” | “y”
+       ```
+
+     - object type에 index signature가 있다면 index signature의 타입들을 반환한다.
+
+       ```jsx
+       type Arrayish = { [n: number]: unknown };
+       type A = keyof Arrayish; // number
+
+       type Mapish = { [k: string]: boolean };
+       type M = keyof Mapish; // string | number
+       ```
+
+       - Q. M은 왜 string | number를 반환하나?
+         - JS의 object keys는 number로 쓰더라도 항상 string으로 강제되기 때문이다. (`obj[0]` is always the same as `obj["0"]`.)
+
+  - keyof 연산자는 특히 mapped type과 함께 쓸 때 유용하다.
+
+- **in** operator - Key Remapping in Mapped Types
+
+  ```jsx
+  type Options = {
+    [K in
+      | "noImplicitAny"
+      | "strictNullChecks"
+      | "strictFunctionTypes"]?: boolean;
+  };
+
+  // same as
+  //   type Options = {
+  //       noImplicitAny?: boolean,
+  //       strictNullChecks?: boolean,
+  //       strictFunctionTypes?: boolean
+  //   };
+  ```
+
+  ```jsx
+  /// 'Partial<T>' is the same as 'T', but with each property marked optional.
+  type Partial<T> = {
+    [K in keyof T]?: T[K];
+  };
+  ```
+
+> blockquote

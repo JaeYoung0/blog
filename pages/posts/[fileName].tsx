@@ -8,14 +8,16 @@ import MdxRenderer from "@components/MdxRenderer";
 
 interface PostPageProps {
   meta: {
-    date: string | number;
+    id: number;
     title: string;
+    date: string;
+    description: string;
   };
 
   mdxSource: MDXRemoteSerializeResult<Record<string, unknown>>;
 }
 
-function PostPage({ meta, mdxSource }: PostPageProps) {
+function PostPage({ mdxSource }: PostPageProps) {
   return (
     <DefaultLayout backgroud="#0d1117">
       <MdxRenderer mdxSource={mdxSource} />
@@ -27,6 +29,7 @@ const getStaticProps: GetStaticProps<any, { fileName: string }, any> = async ({
   params,
 }) => {
   const post = getPostData(params!.fileName);
+
   const mdxSource = await serialize(post.content, {
     mdxOptions: {
       rehypePlugins: [rehypePrism],
@@ -35,7 +38,7 @@ const getStaticProps: GetStaticProps<any, { fileName: string }, any> = async ({
 
   return {
     props: {
-      post,
+      meta: post.meta,
       mdxSource,
     },
   };
@@ -44,15 +47,21 @@ const getStaticProps: GetStaticProps<any, { fileName: string }, any> = async ({
 const getStaticPaths: GetStaticPaths = async () => {
   const posts = await getAllPosts();
 
+  // [ { params: { fileName: 'git-ssh-key' } }, ... ]
+  const paths = posts.map((post) => {
+    return {
+      params: {
+        fileName: post.fileName,
+      },
+    };
+  });
+
   return {
-    paths: posts.map((post) => {
-      return {
-        params: {
-          fileName: post.fileName,
-        },
-      };
-    }),
-    fallback: true,
+    paths,
+
+    // must be false...
+    // https://nextjs.org/docs/basic-features/data-fetching/get-static-paths#how-does-getstaticprops-run-with-regards-to-getstaticpaths
+    fallback: false,
   };
 };
 

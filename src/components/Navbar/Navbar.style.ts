@@ -3,17 +3,18 @@ import { css } from "@emotion/react";
 import { SCREEN_BREAKPOINT } from "@styles/mediaQuery";
 
 export const Drawer = styled.ol`
-  background-color: black;
-
   position: fixed;
   top: 0;
   left: 0;
 
-  transition: transform 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
   width: 100%;
   min-height: 100vh;
+  background: #000;
+
   padding: 10rem;
   text-align: center;
+
+  transition: transform 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
 
   li {
     font-size: 2rem;

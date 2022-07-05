@@ -16,6 +16,8 @@ const StyledFooter = styled.footer`
   width: 100%;
   padding: 1rem;
 
+  background: #000;
+
   p {
     text-align: right;
     font-size: 1rem;

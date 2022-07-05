@@ -20,10 +20,6 @@ const fontStyle = css`
       (MOBILE_MIN_WIDTH / MOBILE_DESIGN_WIDTH)}px;
     }
 
-    ${SCREEN_BREAKPOINT("small")} {
-      font-size: ${(DEFAULT_FONT_SIZE / MOBILE_DESIGN_WIDTH) * 100}vw;
-    }
-
     ${SCREEN_BREAKPOINT("large")} {
       font-size: ${DEFAULT_FONT_SIZE *
       (MOBILE_MAX_WIDTH / MOBILE_DESIGN_WIDTH)}px;

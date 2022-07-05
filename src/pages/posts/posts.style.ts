@@ -5,13 +5,16 @@ export const PostThumbnail = styled.article`
   background: #151519;
   padding: 3rem;
   width: 100%;
-  max-width: 37.5rem;
   border-radius: 10px;
 
   cursor: pointer;
 
+  ${SCREEN_BREAKPOINT("XSmall")} {
+    max-width: 100%;
+  }
+
   ${SCREEN_BREAKPOINT("small")} {
-    max-width: 50rem;
+    max-width: 70rem;
   }
 
   ${SCREEN_BREAKPOINT("large")} {

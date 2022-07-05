@@ -1,5 +1,6 @@
 import * as S from "./MdxRenderer.style";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
+import Input from "@components/Input";
 
 interface Props {
   mdxSource: MDXRemoteSerializeResult<Record<string, unknown>>;
@@ -9,7 +10,7 @@ interface Props {
  * mdx 파일에서 인식해야할 components.
  * e.g. components = { Button, AlertModal }
  */
-const components = {};
+const components = { Input };
 
 function MdxRenderer({ mdxSource }: Props) {
   return (

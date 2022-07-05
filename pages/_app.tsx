@@ -11,7 +11,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Head>
         <title>Jay Young Blog</title>
         <meta name="description" content="" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon-jay.ico" />
       </Head>
       <MyGlobalStyle />
       <RecoilRoot>

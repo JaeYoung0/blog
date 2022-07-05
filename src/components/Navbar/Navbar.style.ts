@@ -62,7 +62,6 @@ export const Logo = styled.span`
 
 export const Navigation = styled.nav<{
   hideNavbar: boolean;
-  background: string;
 }>`
   position: sticky;
 
@@ -75,31 +74,13 @@ export const Navigation = styled.nav<{
 
   align-items: center;
   width: 100%;
-  max-width: 70rem;
+  /* max-width: 70rem; */
   margin: 0 auto;
   height: 7rem;
-
-  ${({ background }) => css`
-    background: ${background};
-  `}
 
   a {
     color: skyblue;
     font-size: 2.5rem;
     margin: 0 10px;
   }
-
-  /* ${({ hideNavbar }) =>
-    hideNavbar &&
-    css`
-      transform: translateY(-100%);
-      transition: transform 0.5s ease-out;
-    `}
-
-  ${({ hideNavbar }) =>
-    !hideNavbar &&
-    css`
-      transform: translateY(0%);
-      transition: transform 0.5s ease-out;
-    `} */
 `;

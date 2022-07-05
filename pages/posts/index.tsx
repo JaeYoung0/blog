@@ -1,5 +1,5 @@
 import { GetStaticProps } from "next";
-import DefaultLayout from "src/layouts/DefaultLayout";
+import LineAnimatedLayout from "src/layouts/LineAnimatedLayout";
 import { getAllPosts } from "../../src/pages/posts/helper";
 import { PostsPageProps } from "../../src/pages/posts/type";
 import * as S from "../../src/pages/posts/posts.style";
@@ -8,7 +8,7 @@ import { useRouter } from "next/router";
 export default function Posts({ posts }: PostsPageProps) {
   const { push } = useRouter();
   return (
-    <DefaultLayout>
+    <LineAnimatedLayout>
       <S.Outer>
         {posts.map((post, idx) => (
           <S.PostThumbnail
@@ -21,7 +21,7 @@ export default function Posts({ posts }: PostsPageProps) {
           </S.PostThumbnail>
         ))}
       </S.Outer>
-    </DefaultLayout>
+    </LineAnimatedLayout>
   );
 }
 

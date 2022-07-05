@@ -32,7 +32,7 @@ export default function Navbar() {
   const { me, logout } = useUser();
 
   return (
-    <S.Navigation hideNavbar={hideNavbar} background={"#222222"}>
+    <S.Navigation hideNavbar={hideNavbar}>
       {/* <Hamburger open={isOpened} onClick={handleHamburgerClick} /> */}
 
       <S.TopMenuWrapper>

@@ -15,14 +15,14 @@ date: "2021-01-06"
 
      - The following type `P` is the same type as `“x” | “y”`
 
-       ```jsx
+       ```tsx
        type Point = { x: number; y: number };
        type P = keyof Point; // “x” | “y”
        ```
 
      - object type에 index signature가 있다면 index signature의 타입들을 반환한다.
 
-       ```jsx
+       ```tsx
        type Arrayish = { [n: number]: unknown };
        type A = keyof Arrayish; // number
 
@@ -37,7 +37,7 @@ date: "2021-01-06"
 
 - **in** operator - Key Remapping in Mapped Types
 
-  ```jsx
+  ```tsx
   type Options = {
     [K in
       | "noImplicitAny"
@@ -53,7 +53,7 @@ date: "2021-01-06"
   //   };
   ```
 
-  ```jsx
+  ```tsx
   /// 'Partial<T>' is the same as 'T', but with each property marked optional.
   type Partial<T> = {
     [K in keyof T]?: T[K];

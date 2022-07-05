@@ -134,6 +134,7 @@ const resetStyle = css`
 
   html {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    background: #000;
   }
 
   button {

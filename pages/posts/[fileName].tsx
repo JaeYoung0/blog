@@ -3,7 +3,6 @@ import DefaultLayout from "@layouts/DefaultLayout";
 import { getAllPosts, getPostData } from "@pages/posts/helper";
 import { serialize } from "next-mdx-remote/serialize";
 import rehypePrism from "rehype-prism-plus";
-import "github-markdown-css/github-markdown.css";
 import { MDXRemoteSerializeResult } from "next-mdx-remote";
 import MdxRenderer from "@components/MdxRenderer";
 

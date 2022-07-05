@@ -24,7 +24,6 @@ export const PostThumbnail = styled.article`
 `;
 
 export const Title = styled.h2`
-  font-family: "SUIT";
   font-size: 1.8rem;
   font-weight: bold;
   color: #c9d1d9;
@@ -43,7 +42,6 @@ export const Description = styled.p`
 `;
 
 export const ReadMore = styled.p`
-  font-family: "SUIT";
   font-size: 1.4rem;
   color: #666666;
 `;

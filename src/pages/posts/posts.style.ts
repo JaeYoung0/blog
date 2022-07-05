@@ -46,7 +46,7 @@ export const ReadMore = styled.p`
   color: #666666;
 `;
 
-export const Outer = styled.section`
+export const Outer = styled.main`
   display: flex;
   flex-direction: column;
   justify-content: center;

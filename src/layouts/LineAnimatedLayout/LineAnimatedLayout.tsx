@@ -43,6 +43,10 @@ const Container = styled.div`
     animation: ${showLine} cubic-bezier(0.175, 0.885, 0.32, 1.275) 2s forwards;
   }
 
+  main {
+    padding-top: 5rem;
+  }
+
   footer::after {
     position: absolute;
     top: 0;

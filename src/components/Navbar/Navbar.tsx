@@ -37,7 +37,7 @@ export default function Navbar() {
 
       <S.TopMenuWrapper>
         <Link href="/posts">
-          <S.Logo>Jay Young</S.Logo>
+          <S.Logo>YoungJay</S.Logo>
         </Link>
       </S.TopMenuWrapper>
 

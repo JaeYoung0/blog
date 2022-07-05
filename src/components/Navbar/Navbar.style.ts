@@ -24,7 +24,7 @@ export const Drawer = styled.ol`
 `;
 
 export const TopMenuWrapper = styled.div`
-  max-width: 120rem;
+  /* max-width: 120rem; */
 
   ${SCREEN_BREAKPOINT("large")} {
     display: flex;
@@ -48,11 +48,9 @@ export const Menus = styled.div`
 `;
 
 export const Logo = styled.span`
-  font-family: "SUIT";
   font-size: 1.8rem;
-  font-weight: 700;
 
-  color: skyblue;
+  color: #e4e5e7;
   cursor: pointer;
 
   ${SCREEN_BREAKPOINT("large")} {
@@ -64,23 +62,16 @@ export const Navigation = styled.nav<{
   hideNavbar: boolean;
 }>`
   position: sticky;
-
   top: 0;
   left: 0;
   z-index: 10;
 
   display: flex;
   justify-content: flex-start;
-
   align-items: center;
-  width: 100%;
-  /* max-width: 70rem; */
-  margin: 0 auto;
-  height: 7rem;
 
-  a {
-    color: skyblue;
-    font-size: 2.5rem;
-    margin: 0 10px;
-  }
+  width: 100%;
+
+  margin: 0 auto;
+  height: 6.5rem;
 `;

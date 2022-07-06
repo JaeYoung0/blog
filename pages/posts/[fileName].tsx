@@ -5,6 +5,7 @@ import { serialize } from "next-mdx-remote/serialize";
 import rehypePrism from "rehype-prism-plus";
 import { MDXRemoteSerializeResult } from "next-mdx-remote";
 import MdxRenderer from "@components/MdxRenderer";
+import UtteranceComment from "@components/UtteranceComment";
 
 interface PostPageProps {
   meta: {
@@ -21,6 +22,7 @@ function PostPage({ mdxSource }: PostPageProps) {
   return (
     <DefaultLayout backgroud="#0d1117">
       <MdxRenderer mdxSource={mdxSource} />
+      <UtteranceComment />
     </DefaultLayout>
   );
 }

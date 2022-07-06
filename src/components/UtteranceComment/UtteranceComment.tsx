@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 function UtteranceComment() {
+  // FIXME: loading state
   const [loading, setLoading] = useState(false);
 
   const loadUtterance = (el: HTMLDivElement | null) => {

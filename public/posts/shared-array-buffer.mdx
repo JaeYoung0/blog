@@ -1,0 +1,30 @@
+---
+id: 4
+title: cross-origin isolated 환경 만들기
+description: "COOP, COEP, Http response header"
+date: "2021-01-06"
+---
+
+COOP 및 COEP를 사용하여 cross-origin isolated 환경을 설정해야 SharedArrayBuffer를 쓸 수 있다. (https://web.dev/coop-coep/)
+
+- COOP, COEP는 뭐야?
+- SharedArrayBuffer는 뭐길래 이런 환경이 필요한거야?
+
+self.crossOriginIsolated 로 현재 웹이 cross-origin isolated 환경인지 여부를 체크할 수 있다.
+
+COEP를 'credentialless'로 설정해서 cross-origin isolated 환경을 만들 수도 있다. 이렇게 하면 COEP를 'require-corp'로 하느라 보이지 않았던 이미지등의 리소스들을 보이게 할 수 있다
+
+---
+
+현재 문제
+
+1. 모바일 크롬에서는 sharedArrayBuffer가 제대로 동작하지 않는 것 같다.
+   => 아니다! ffmpeg conversion이 fail해서 그런거였다.
+   => 왜?
+   => ""
+   =? vp8은 MKV, WebM 컨테이너에서 사용 가능한 비디오 코덱
+2. ipad chrome에서 영상 업로드시 무한 로딩
+   => preview 영상이 잘 보이는걸 보아하니, 녹화 자체에는 문제 없다.
+   => 업로드하는 과정에서 문제가 있는 것 같은데 디버깅해야겠다... !!
+
+- 크로미움 mediastream api 자료 (https://chromium.googlesource.com/chromium/src/+/HEAD/third_party/blink/renderer/modules/mediarecorder/README.md)

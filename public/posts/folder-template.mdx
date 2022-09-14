@@ -1,0 +1,54 @@
+---
+id: 6
+title: 반복되는 폴더 생성 작업 대응
+description: "제너레이더 같은건 없을까 - vscode extension 중에 Folder Templates를 써보자"
+date: "2021-01-06"
+---
+
+vscode > preference > user snippet에서 `export {default} from './파일명'`같이 쓰던 것 보다 더 간단한 기능을 발견...
+
+https://marketplace.visualstudio.com/items?itemName=Huuums.vscode-fast-folder-structure#template-format
+
+나는 vscode의 settings.json에다가 아래와 같이 template을 만들었다.
+
+```
+  "folderTemplates.structures": {
+    "name": "My Custom Template",
+    "omitParentDirectory": false,
+    "structure": [
+      {
+        "fileName": "<FTName>.tsx",
+        "template": "Typescript Functional Component"
+      },
+      {
+        "fileName": "<FTName>.style.ts",
+        "template": "Typescript Emotion Style"
+      },
+      {
+        "fileName": "index.ts",
+        "template": "Index File"
+      }
+    ]
+  },
+
+  "folderTemplates.fileTemplates": {
+    "Typescript Functional Component": [
+      "import React from 'react';",
+      "",
+      "interface Props {",
+      "}",
+      "",
+      "function <FTName> ({}:Props) {",
+      "  return <div/>;",
+      "};",
+      "",
+      "export default <FTName>;"
+    ],
+    "Typescript Emotion Style": [
+      "import styled from '@emotion/styled';",
+      "",
+      "export const Container = styled.div``"
+    ],
+    "Index File": "export {default} from './<FTName>'"
+  }
+```

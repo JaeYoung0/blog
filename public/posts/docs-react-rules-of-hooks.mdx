@@ -1,0 +1,60 @@
+---
+title: React docs - Rules of Hooks
+description: "공식문서 다시보기 - 훅 시리즈 - 5"
+date: "2022-09-17"
+---
+
+## hook을 최상위에서만 호출하세요.
+
+> hook을 loop, condition, nested function 안에서 호출하지마세요. early return 하기 전에만 쓰세요.
+
+> 조건부로 effect를 실행하기를 원한다면, 조건문을 Hook 내부에 써주세요.
+
+=> Hook은 컴포넌트가 렌더링 될 때마다 항상 동일한 순서로 호출되어야하기 떄문임.
+
+=> 이는 useState와 useEffect가 여러 번 호출되는 중에도 Hook의 상태를 올바르게 유지할 수 있도록 해줌.
+
+react는 어떤 state가 어떤 useState에 대응되는지를 판단할 때 hooks의 순서를 본다.
+즉 react에서는 hook이 호출되는 순서를 매 렌더링마다 동일하게 유지하는게 중요하다.
+어떤 조건에도 불구하고 말이다.
+
+<br />
+
+#### code
+
+아래와 같이 쓰다면, cnt가 3이상이 되는 순간 브라우저는 `Error: Rendered more hooks than during the previous render.`라고 불평한다.
+
+당연히 lint error도 발생한다.
+
+`React Hook "useEffect" is called conditionally. React Hooks must be called in the exact same order in every component render.eslintreact-hooks/rules-of-hooks`
+
+```tsx
+function Test() {
+  const [cnt, setCnt] = useState(0);
+
+  if (cnt >= 3) {
+    useEffect(() => {
+      alert(cnt);
+    }, [cnt]);
+  }
+
+  return (
+    <div>
+      <button onClick={() => setCnt(cnt + 1)}>UP</button>
+    </div>
+  );
+}
+
+export default Test;
+```
+
+<br />
+<br />
+
+## React 함수 내부에서만 Hooks을 호출하세요.
+
+> Hooks을 일반적인 js함수에서 호출하지 마세요.
+
+> React 함수 컴포넌트 혹은 Custom Hook 안에서만 hook을 호출하세요.
+
+=> 컴포넌트의 모든 상태 관련 로직을 명확하게 보여주기 위함

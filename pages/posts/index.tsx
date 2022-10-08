@@ -4,6 +4,7 @@ import { getAllPosts } from "../../src/pages/posts/helper";
 import { PostsPageProps } from "../../src/pages/posts/type";
 import * as S from "../../src/pages/posts/posts.style";
 import { useRouter } from "next/router";
+import dayjs from "dayjs";
 
 export default function Posts({ posts }: PostsPageProps) {
   const { push } = useRouter();
@@ -27,10 +28,13 @@ export default function Posts({ posts }: PostsPageProps) {
 
 export const getStaticProps: GetStaticProps = async () => {
   const posts = await getAllPosts();
+  const sortedPosts = posts.sort(
+    (a, b) => dayjs(b.meta.date).unix() - dayjs(a.meta.date).unix()
+  );
 
   return {
     props: {
-      posts,
+      posts: sortedPosts,
     },
   };
 };

@@ -1,0 +1,14 @@
+---
+title: getUserMedia()사용하여 사진찍기
+description: "navigator.mediaDevices.getUserMedia()로 모바일, pc 카메라에 접근하기"
+date: "2021-10-01"
+---
+
+코드는 2가지 주요한 부분으로 나눠짐. stream & capture // presentation
+
+##1. stream & capture
+
+- `<video>` 는 getUserMedia()에서 얻은 stream을 받는다.
+- 유저는 video frame을 capture하기 위해 `<button>`을 클릭한다.
+
+##2. presentation

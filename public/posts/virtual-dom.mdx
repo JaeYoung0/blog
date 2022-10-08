@@ -1,0 +1,46 @@
+---
+title: virtual DOM and Reconciliation
+description: "react 내부 동작에 대해 알아보기"
+date: "2022-10-08"
+---
+
+## 1.
+
+virtual DOM이란, 가상적인 DOM이다.<br />
+왜 필요한가? Reconciliation(재조정) 과정을 위해 필요하다.
+
+Reconciliation은 무엇인가?<br />
+가상적인 UI 표현을 메모리에 저장하고 ReactDOM같은 라이브러리에 의해 "진짜" DOM과 동기화하는 과정이다.
+
+이 덕분에 React의 선언적인 API 작성이 가능해진다.<br />
+UI를 그려내는 state가 무엇인지 react로 작성하면 -> DOM이 이에 맞춰진다.<br />
+즉, state -> 원하는 UI가 VDOM에 저장됨 -> DOM이 VDOM에 맞춰짐.
+
+위 과정은 어트리뷰트 조작, 이벤트 핸들링, 수동적인 DOM 업데이트를 추상화한다. 흠 ...
+
+virtual DOM은 UI를 저장하는 객체다. 때문에 React elements와 연관된다.
+또한 React는 컴포넌트 트리에 대한 추가 정보를 저장하기 위해 "fibers"라는 내부 객체를 사용한다.
+
+## 2.
+
+React Fiber는 무엇인가?<br />
+React 16부터 사용한 새로운 재조정 엔진이다.
+음... 위에서는 컴포넌트 트리에 대한 추가 정보를 저장하는 내부 객체라더니?
+아무튼 이것의 주요 목표는 "incremental rendering of the virtual DOM"이라고 한다.
+VDOM을 점증적으로 렌더링한다라 ... 이게 무슨 말일까?
+
+## 3.
+
+React Fiber를 자세히 알아보기 전에 Reconciliation을 먼저 더 들여다보자.
+React 내부는 어떻게 굴러가길래 1. 컴포넌트 업데이트가 예측 가능하고 2. 고성능 앱을 만들 수 있게 된걸까?
+-> TODO. https://ko.reactjs.org/docs/reconciliation.html 읽고 정리하기.
+
+## 4.
+
+-> TODO. https://github.com/acdlite/react-fiber-architecture 읽고 정리하기.
+
+## Refercence
+
+- [Virtual DOM and Internals](https://reactjs.org/docs/faq-internals.html)
+- [React Fiber Architecture](https://github.com/acdlite/react-fiber-architecture)
+- [Reconciliation](https://reactjs.org/docs/reconciliation.html)

@@ -26,9 +26,10 @@ export const PostThumbnail = styled.article`
   }
 `;
 
-export const Title = styled.h2`
+export const Title = styled.h1`
   font-size: 1.8rem;
   font-weight: bold;
+
   color: #c9d1d9;
   margin-bottom: 2rem;
 `;

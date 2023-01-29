@@ -1,4 +1,4 @@
-import { Suspense, useRef, useState } from "react";
+import { Suspense, useState } from "react";
 import * as S from "./SpaceBox.style";
 import { Canvas } from "@react-three/fiber";
 import { Stars, OrbitControls } from "@react-three/drei";
@@ -65,7 +65,7 @@ function SpaceBox() {
     <S.CanvasContainer>
       <Canvas>
         <Suspense fallback={null}>
-          <ambientLight intensity={0.5} />
+          <ambientLight />
           <Stars
             radius={20}
             depth={300}

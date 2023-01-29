@@ -1,4 +1,5 @@
 import { Client } from "@notionhq/client";
+import { BlockObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 
 // https://samuelkraft.com/blog/building-a-notion-blog-with-public-api
 
@@ -21,5 +22,5 @@ export const getNotionBlocks = async (blockId: string) => {
     block_id: blockId,
     // page_size: 50,
   });
-  return response.results;
+  return response.results as BlockObjectResponse[];
 };

@@ -1,5 +1,13 @@
 import { css } from "@emotion/react";
 
+export const hideScroll = `
+-ms-overflow-style: none; /* IE and Edge */
+scrollbar-width: none; /* Firefox */
+&::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+`;
+
 const resetStyle = css`
   /* Eric Meyer - reset style */
   html,
@@ -135,6 +143,7 @@ const resetStyle = css`
   html {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     background: #000;
+    ${hideScroll}
   }
 
   button {

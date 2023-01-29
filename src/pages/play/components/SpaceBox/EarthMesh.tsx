@@ -35,15 +35,16 @@ export default function EarthMesh() {
   });
 
   return (
-    <mesh ref={earthRef} position={[0, 0, -5]}>
-      <sphereGeometry args={[1, 32, 32]} />
+    <div />
+    // <mesh ref={earthRef} position={[0, 0, -5]}>
+    //   <sphereGeometry args={[1, 32, 32]} />
 
-      <meshPhongMaterial
-        specularMap={specularMap}
-        map={specularMap}
-        side={THREE.DoubleSide}
-      />
-      <meshStandardMaterial map={cloudsMap} normalMap={lightsMap} />
-    </mesh>
+    //   <meshPhongMaterial
+    //     specularMap={specularMap}
+    //     map={specularMap}
+    //     side={THREE.DoubleSide}
+    //   />
+    //   <meshStandardMaterial map={cloudsMap} normalMap={lightsMap} />
+    // </mesh>
   );
 }

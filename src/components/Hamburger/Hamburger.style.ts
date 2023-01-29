@@ -2,30 +2,27 @@ import { SCREEN_BREAKPOINT } from "@styles/mediaQuery";
 import styled from "@emotion/styled";
 import { css } from "@emotion/react";
 
-const SIZE = 3.5;
+const SIZE = 2.5;
 
 export const HamburgerButton = styled.div`
-  position: absolute;
-  left: 2rem;
-  display: flex;
+  /* display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
   width: ${SIZE}rem;
   height: ${SIZE}rem;
 
   cursor: pointer;
   transition: all 0.5 ease-in-out;
 
-  z-index: 100;
-
   ${SCREEN_BREAKPOINT("large")} {
     display: none;
   }
 `;
 
+const HEIGHT = "2px";
 export const Line = styled.div<{ isOpened: boolean }>`
   width: 5rem;
-  height: 0.4rem;
+  height: ${HEIGHT};
   background-color: skyblue;
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(255, 101, 47, 0.2);
@@ -36,7 +33,7 @@ export const Line = styled.div<{ isOpened: boolean }>`
     position: absolute;
     content: "";
     width: ${SIZE}rem;
-    height: 0.4rem;
+    height: ${HEIGHT};
     background-color: skyblue;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(255, 101, 47, 0.2);

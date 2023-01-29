@@ -1,8 +1,6 @@
 const breakpoints = {
-  XSmall: 320,
-  small: 600,
-  large: 900,
-  XLarge: 1200,
+  small: 640,
+  large: 1024,
 };
 
 type BP = keyof typeof breakpoints;

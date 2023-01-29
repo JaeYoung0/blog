@@ -599,11 +599,11 @@ const markdownCss = css`
     content: "";
   }
 
-  > *:first-child {
+  > *:first-of-type {
     margin-top: 0 !important;
   }
 
-  > *:last-child {
+  > *:last-of-type {
     margin-bottom: 0 !important;
   }
 
@@ -639,11 +639,11 @@ const markdownCss = css`
     margin-bottom: 16px;
   }
 
-  blockquote > :first-child {
+  blockquote > :first-of-type {
     margin-top: 0;
   }
 
-  blockquote > :last-child {
+  blockquote > :last-of-type {
     margin-bottom: 0;
   }
 

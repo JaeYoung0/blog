@@ -81,12 +81,12 @@ function CardScatter() {
   return (
     <>
       <Head>
-        <script
+        {/* <script
           src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"
           integrity="sha512-UxP+UhJaGRWuMG2YC6LPWYpFQnsSgnor0VUF3BHdD83PS/pOpN+FYbZmrYN+ISX8jnvgVUciqP/fILOXDjZSwg=="
           crossOrigin="anonymous"
           referrerPolicy="no-referrer"
-        ></script>
+        ></script> */}
       </Head>
       <S.Container>
         <h1>CardScatter</h1>

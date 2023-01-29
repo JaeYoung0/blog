@@ -1,3 +1,4 @@
+import { COLORS } from "@constants/colors";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 
@@ -599,11 +600,11 @@ const markdownCss = css`
     content: "";
   }
 
-  > *:first-child {
+  > *:first-of-type {
     margin-top: 0 !important;
   }
 
-  > *:last-child {
+  > *:last-of-type {
     margin-bottom: 0 !important;
   }
 
@@ -639,11 +640,11 @@ const markdownCss = css`
     margin-bottom: 16px;
   }
 
-  blockquote > :first-child {
+  blockquote > :first-of-type {
     margin-top: 0;
   }
 
-  blockquote > :last-child {
+  blockquote > :last-of-type {
     margin-bottom: 0;
   }
 
@@ -1040,13 +1041,18 @@ const markdownCss = css`
 
 const bodyCss = css`
   width: 100%;
-  max-width: 85rem;
+  max-width: min(84rem, 100%);
 
   margin: 0 auto;
   color: #e4e5e7;
 `;
 
-export const Wrapper = styled.article`
+export const Container = styled.div`
+  width: 100%;
+  background: ${COLORS.DARK_BLUE_02};
+`;
+
+export const Article = styled.article`
   ${markdownCss}
   ${bodyCss}
 

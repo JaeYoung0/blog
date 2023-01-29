@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import { css } from "@emotion/react";
 import { SCREEN_BREAKPOINT } from "@styles/mediaQuery";
 
 export const Drawer = styled.ol`
@@ -24,22 +23,7 @@ export const Drawer = styled.ol`
   }
 `;
 
-export const TopMenuWrapper = styled.div`
-  /* max-width: 120rem; */
-
-  ${SCREEN_BREAKPOINT("large")} {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 100%;
-  }
-`;
-
 export const Menus = styled.div`
-  ${SCREEN_BREAKPOINT("large") || SCREEN_BREAKPOINT("XLarge")} {
-    display: none;
-  }
-
   span {
     font-size: 1.8rem;
     color: skyblue;
@@ -48,8 +32,9 @@ export const Menus = styled.div`
   }
 `;
 
-export const Logo = styled.span`
+export const Logo = styled.p`
   font-size: 1.8rem;
+  font-weight: bold;
 
   color: #e4e5e7;
   cursor: pointer;
@@ -62,17 +47,5 @@ export const Logo = styled.span`
 export const Navigation = styled.nav<{
   hideNavbar: boolean;
 }>`
-  position: sticky;
-  top: 0;
-  left: 0;
-  z-index: 10;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
   width: 100%;
-
-  margin: 0 auto;
-  height: 6.5rem;
 `;

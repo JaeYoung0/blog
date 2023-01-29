@@ -1,11 +1,13 @@
 import React, { useEffect } from "react";
 import {
   BlockObjectResponse,
-  GetPageResponse,
-  PageObjectResponse,
+  // GetPageResponse,
+  // PageObjectResponse,
   PartialBlockObjectResponse,
   RichTextItemResponse,
   TextRichTextItemResponse,
+  BulletedListItemBlockObjectResponse,
+  NumberedListItemBlockObjectResponse,
 } from "@notionhq/client/build/src/api-endpoints";
 import * as S from "./style";
 import Prism from "prismjs";
@@ -55,18 +57,26 @@ function Text({ text }: { text: RichTextItemResponse[] }) {
   );
 }
 
-// const renderNestedList = (block) => {
-//   const { type } = block;
-//   const value = block[type];
-//   if (!value) return null;
-
-//   const isNumberedList = value.children[0].type === "numbered_list_item";
-
-//   if (isNumberedList) {
-//     return <ol>{value.children.map((block) => renderBlock(block))}</ol>;
-//   }
-//   return <ul>{value.children.map((block) => renderBlock(block))}</ul>;
-// };
+const renderNestedList = (
+  block:
+    | BulletedListItemBlockObjectResponse
+    | NumberedListItemBlockObjectResponse
+) => {
+  // const { type } = block;
+  // 애초에 패키지에서 타입정의가 잘못됨
+  // if (type === "numbered_list_item") {
+  //   return (
+  //     <ol>
+  //       {block.numbered_list_item?.children.map((block) => renderBlock(block))}
+  //     </ol>
+  //   );
+  // }
+  // return (
+  //   <ul>
+  //     {block.bulleted_list_item?.children?.map((block) => renderBlock(block))}
+  //   </ul>
+  // );
+};
 
 function isBlockObjectResponse(
   block: PartialBlockObjectResponse | BlockObjectResponse
@@ -77,16 +87,10 @@ function isBlockObjectResponse(
 const renderBlock = (
   block: PartialBlockObjectResponse | BlockObjectResponse
 ) => {
-  if (!isBlockObjectResponse(block)) return;
-  const { type, id } = block;
-
   console.log("@@block", block);
 
-  // if(type === 'numbered_list_item') return null
-  // if(type === 'audio') return null
-  // block.type
-  // const wow = 'paragraph'
-  // const value = block[type] as any;
+  if (!isBlockObjectResponse(block)) return;
+  const { type, id } = block;
 
   switch (type) {
     case "paragraph":
@@ -113,15 +117,20 @@ const renderBlock = (
           <Text text={block.heading_3.rich_text} />
         </h3>
       );
-    case "bulleted_list_item":
-    case "numbered_list_item":
-      return (
-        // <li>
-        //   <Text text={value.rich_text} />
-        //   {!!value.children && renderNestedList(block)}
-        // </li>
-        <div></div>
-      );
+    // case "bulleted_list_item":
+    //   return (
+    //     <li>
+    //       <Text text={block.bulleted_list_item.rich_text} />
+    //       {!!block.has_children && renderNestedList(block)}
+    //     </li>
+    //   );
+    // case "numbered_list_item":
+    //   return (
+    //     <li>
+    //       <Text text={block.numbered_list_item.rich_text} />
+    //       {!!block.has_children && renderNestedList(block)}
+    //     </li>
+    //   );
     case "to_do":
       return (
         <div>
@@ -212,11 +221,14 @@ function BlocksRenderer({ blocks }: Props) {
   }, []);
 
   return (
-    <S.Wrapper>
-      {blocks.map((block) => (
-        <React.Fragment key={block.id}>{renderBlock(block)}</React.Fragment>
-      ))}
-    </S.Wrapper>
+    <S.Container>
+      <S.Article>
+        {blocks.map((block) => (
+          <React.Fragment key={block.id}>{renderBlock(block)}</React.Fragment>
+        ))}
+      </S.Article>
+      {/* aside */}
+    </S.Container>
   );
 }
 

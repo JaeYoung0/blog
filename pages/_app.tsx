@@ -9,7 +9,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <title>Jay Young Blog</title>
+        <title>제이영</title>
         <meta name="description" content="" />
         <link rel="icon" href="/favicon-jay.ico" />
       </Head>

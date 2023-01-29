@@ -16,7 +16,7 @@ function UtteranceComment() {
     const scriptEl = document.createElement("script");
     scriptEl.src = "https://utteranc.es/client.js";
     scriptEl.async = true;
-    scriptEl.setAttribute("repo", "JaeYoung0/j.young-blog-frontend");
+    scriptEl.setAttribute("repo", "JaeYoung0/notion-blog");
     scriptEl.setAttribute("issue-term", "pathname");
     scriptEl.setAttribute("theme", "github-dark");
     scriptEl.setAttribute("label", "blog-comment");

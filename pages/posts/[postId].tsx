@@ -13,15 +13,18 @@ import { TitleColumn } from "@pages/posts/type";
 import * as S from "@pages/posts/post.style";
 type PostPageProps = {
   post: PageObjectResponse; // GetPageResponse로 일일이 쓰기는 귀찮다..
-  blocks: (BlockObjectResponse | PartialBlockObjectResponse)[];
+  blocks: BlockObjectResponse[];
 };
 
 function PostPage({ post, blocks }: PostPageProps) {
   return (
-    <DefaultLayout backgroud="#0d1117">
+    <DefaultLayout>
       <S.Title>
         {(post.properties.title as TitleColumn).title[0].text.content}
       </S.Title>
+      {/* <S.Subtitle> */}
+      {/* {(post.properties.subtitle as SubtitleColumn).title[0].text.content} */}
+      {/* </S.Subtitle> */}
       <BlocksRenderer blocks={blocks} />
       <UtteranceComment />
     </DefaultLayout>
@@ -54,11 +57,44 @@ const getStaticProps: GetStaticProps<any, { postId: string }, any> = async ({
   const post = await getNotionPage(id);
   const blocks = await getNotionBlocks(id);
 
+  const childBlocks = await Promise.all(
+    blocks
+      .filter((block) => block.has_children ?? false)
+      .map(async (block) => {
+        return {
+          id: block.id,
+          children: await getNotionBlocks(block.id),
+        };
+      })
+  );
+
+  // console.log(
+  //   "@@childBlocks",
+  //   childBlocks.map((item) => item.children)
+  // );
+
+  const blocksWithChildren = blocks.map((block) => {
+    if (block.type === "audio") return;
+    // childblock 안더함
+
+    // block[block.type]
+    // // Add child blocks if the block should contain children but none exists
+    // if (block.has_children && !block[block.type].children) {
+    //   block[block.type]["children"] = childBlocks.find(
+    //     (x) => x.id === block.id
+    //   )?.children;
+    // }
+    return block;
+  });
+
+  // console.log("@@blocksWithChildren", blocksWithChildren);
+
   return {
     props: {
       post,
-      blocks,
+      blocks: blocksWithChildren,
     },
+    revalidate: 60 * 60, // In seconds
   };
 };
 

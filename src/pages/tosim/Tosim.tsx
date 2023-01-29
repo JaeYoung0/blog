@@ -1,7 +1,7 @@
 import _ from "lodash";
 import * as S from "./Tosim.style";
 import useCurrentSection from "@hooks/useCurrentSection";
-import Navbar from "@components/Navbar";
+import Navbar from "@components/Navigation";
 import { useEffect, useRef } from "react";
 import { SECTION_INFO } from "./info.data";
 

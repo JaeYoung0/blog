@@ -15,7 +15,8 @@ export default function EarthWithShader() {
   //
   return (
     <>
-      <mesh position={[-3, 3, -5]} ref={earthRef}>
+      <div />
+      {/* <mesh position={[-3, 3, -5]} ref={earthRef}>
         <sphereGeometry args={[1, 50, 50]} />
         <shaderMaterial
           fragmentShader={fragmentShader}
@@ -35,7 +36,7 @@ export default function EarthWithShader() {
           blending={THREE.AdditiveBlending}
           side={THREE.BackSide}
         />
-      </mesh>
+      </mesh> */}
     </>
   );
 }

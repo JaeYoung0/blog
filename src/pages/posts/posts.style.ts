@@ -1,17 +1,14 @@
 import styled from "@emotion/styled";
 import { SCREEN_BREAKPOINT } from "@styles/mediaQuery";
 
-export const PostThumbnail = styled.article`
+export const Post = styled.article`
   background: #151519;
+
   padding: 3rem;
   width: 100%;
   border-radius: 10px;
 
   cursor: pointer;
-
-  ${SCREEN_BREAKPOINT("XSmall")} {
-    max-width: 100%;
-  }
 
   ${SCREEN_BREAKPOINT("small")} {
     max-width: 70rem;
@@ -26,9 +23,20 @@ export const PostThumbnail = styled.article`
   }
 `;
 
-export const Title = styled.h2`
+export const Title = styled.h1`
   font-size: 1.8rem;
   font-weight: bold;
+  line-height: 1.5;
+
+  color: #c9d1d9;
+  margin-bottom: 2rem;
+`;
+
+export const Subtitle = styled.p`
+  font-size: 1.4rem;
+  font-weight: bold;
+  line-height: 1.5;
+
   color: #c9d1d9;
   margin-bottom: 2rem;
 `;
@@ -55,5 +63,5 @@ export const Outer = styled.main`
   justify-content: center;
   align-items: center;
 
-  padding: 0rem 3rem;
+  padding: 3rem 3rem 0rem;
 `;

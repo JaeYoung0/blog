@@ -16,9 +16,10 @@ export default function MoonMesh() {
   });
 
   return (
-    <mesh ref={moonRef} position={[0, 3, -5]}>
-      <sphereGeometry args={[1, 32, 32]} />
-      <meshStandardMaterial map={moonMap} />
-    </mesh>
+    <div />
+    // <mesh ref={moonRef} position={[0, 3, -5]}>
+    //   <sphereGeometry args={[1, 32, 32]} />
+    //   <meshStandardMaterial map={moonMap} />
+    // </mesh>
   );
 }

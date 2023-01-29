@@ -11,7 +11,8 @@
       "@icons/*": ["src/icons/*"],
       "@services/*": ["src/services/*"],
       "@atoms/*": ["src/atoms/*"],
-      "@public/*": ["public/*"]
+      "@public/*": ["public/*"],
+      "@/*": ["src/*"]
     },
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
@@ -27,7 +28,9 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "jsxImportSource": "@emotion/react",
-    "noUnusedLocals": true
+    "incremental": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]

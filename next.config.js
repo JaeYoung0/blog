@@ -14,10 +14,6 @@ const nextConfig = {
     return config;
   },
 
-  compiler: {
-    emotion: true,
-  },
-
   reactStrictMode: true,
 
   async redirects() {

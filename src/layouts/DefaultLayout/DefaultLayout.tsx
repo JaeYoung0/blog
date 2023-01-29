@@ -1,24 +1,32 @@
 import React from "react";
-import Navbar from "@components/Navbar";
-import { css } from "@emotion/react";
+import Navigation from "@components/Navigation";
+
+import * as S from "./style";
+import Link from "next/link";
 
 interface Props {
   children: React.ReactNode;
-  backgroud?: string;
 }
 
-function DefaultLayout({ children, backgroud = "#222222" }: Props) {
+function DefaultLayout({ children }: Props) {
   return (
-    <div
-      css={css`
-        background: ${backgroud};
-        min-height: 100vh;
-        overflow-x: hidden;
-      `}
-    >
-      <Navbar />
-      {children}
-    </div>
+    <S.Layout>
+      <S.Header>
+        {/* TODO. Link가 바깥에 있는게 맞나? */}
+        <S.Logo>
+          <Link href="/posts">
+            <img style={{ width: "6rem" }} src="/blog-logo-2.png" />
+            <span>제이영의 기술블로그</span>
+          </Link>
+        </S.Logo>
+
+        <Navigation />
+      </S.Header>
+      <S.Main>{children}</S.Main>
+      <S.Footer>
+        <span>© 2023 제이영. All rights reserved.</span>
+      </S.Footer>
+    </S.Layout>
   );
 }
 

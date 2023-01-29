@@ -16,16 +16,33 @@ export const Banner = styled.div`
   text-align: center;
 
   h1 {
-    font-size: 10rem;
-    margin-bottom: 2rem;
+    font-size: max(6rem, 5vw);
   }
   h2 {
-    font-size: 4.5rem;
+    font-size: max(6rem, 4vw);
     line-height: 1.3;
+  }
+  h1 + h2 {
+    margin-top: 2rem;
   }
 `;
 
 export const Wrapper = styled.div`
   padding: 6rem 2rem;
   margin: 0 auto;
+`;
+
+export const Button = styled.button`
+  padding: 1rem 2rem;
+  font-size: 2rem;
+  color: skyblue;
+  border: 1px solid skyblue;
+  background-color: transparent;
+  & + & {
+    margin-left: 2rem;
+  }
+`;
+
+export const Menu = styled.div`
+  text-align: center;
 `;

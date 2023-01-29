@@ -7,7 +7,7 @@ import * as THREE from "three";
 export default function Shader() {
   return (
     <>
-      <mesh position={[-3, 3, -5]}>
+      {/* <mesh position={[-3, 3, -5]}>
         <sphereGeometry args={[1, 50, 50]} />
         <shaderMaterial
           fragmentShader={fragmentShader}
@@ -27,7 +27,7 @@ export default function Shader() {
           blending={THREE.AdditiveBlending}
           side={THREE.BackSide}
         />
-      </mesh>
+      </mesh> */}
     </>
   );
 }

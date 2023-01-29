@@ -3,6 +3,8 @@ import matter from "gray-matter";
 import fs from "fs";
 import { PostData } from "./type";
 
+// public 폴더에 posts를 mdx로 관리하기
+
 export const filesDirectory = join(process.cwd(), "/public/posts");
 
 export const getPostData = (fileName: string) => {

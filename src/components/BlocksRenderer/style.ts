@@ -1,5 +1,6 @@
-import styled from "@emotion/styled";
+import { COLORS } from "@constants/colors";
 import { css } from "@emotion/react";
+import styled from "@emotion/styled";
 
 const markdownCss = css`
   // https://www.npmjs.com/package/github-markdown-css 변형
@@ -1040,134 +1041,20 @@ const markdownCss = css`
 
 const bodyCss = css`
   width: 100%;
-  max-width: 85rem;
+  max-width: min(84rem, 100%);
 
   margin: 0 auto;
   color: #e4e5e7;
 `;
 
-const codeBlockCss = css`
-  /**
- * prism.js tomorrow night eighties for JavaScript, CoffeeScript, CSS and HTML
- * Based on https://github.com/chriskempson/tomorrow-theme
- * @author Rose Pritchard
- */
-
-  code[class*="language-"],
-  pre[class*="language-"] {
-    color: #ccc;
-    font-family: Consolas, Monaco, "Andale Mono", monospace;
-    direction: ltr;
-    text-align: left;
-    white-space: pre;
-    word-spacing: normal;
-    word-break: normal;
-    line-height: 1.5;
-
-    -moz-tab-size: 4;
-    -o-tab-size: 4;
-    tab-size: 4;
-
-    -webkit-hyphens: none;
-    -moz-hyphens: none;
-    -ms-hyphens: none;
-    hyphens: none;
-  }
-
-  /* Code blocks */
-  pre[class*="language-"] {
-    padding: 1em;
-    margin: 0.5em 0;
-    overflow: auto;
-  }
-
-  :not(pre) > code[class*="language-"],
-  pre[class*="language-"] {
-    background: #2d2d2d;
-  }
-
-  /* Inline code */
-  :not(pre) > code[class*="language-"] {
-    padding: 0.1em;
-    border-radius: 0.3em;
-  }
-
-  .token.comment,
-  .token.block-comment,
-  .token.prolog,
-  .token.doctype,
-  .token.cdata {
-    color: #999;
-  }
-
-  .token.punctuation {
-    color: #ccc;
-  }
-
-  .token.tag,
-  .token.attr-name,
-  .token.namespace,
-  .token.deleted {
-    color: #e2777a;
-  }
-
-  .token.function-name {
-    color: #6196cc;
-  }
-
-  .token.boolean,
-  .token.number,
-  .token.function {
-    color: #f08d49;
-  }
-
-  .token.property,
-  .token.class-name,
-  .token.constant,
-  .token.symbol {
-    color: #f8c555;
-  }
-
-  .token.selector,
-  .token.important,
-  .token.atrule,
-  .token.keyword,
-  .token.builtin {
-    color: #cc99cd;
-  }
-
-  .token.string,
-  .token.char,
-  .token.attr-value,
-  .token.regex,
-  .token.variable {
-    color: #7ec699;
-  }
-
-  .token.operator,
-  .token.entity,
-  .token.url {
-    color: #67cdcc;
-  }
-
-  .token.important,
-  .token.bold {
-    font-weight: bold;
-  }
-  .token.italic {
-    font-style: italic;
-  }
-
-  .token.entity {
-    cursor: help;
-  }
-
-  .token.inserted {
-    color: green;
-  }
+export const Container = styled.div`
+  width: 100%;
+  background: ${COLORS.DARK_BLUE_02};
 `;
-export const Wrapper = styled.article`
+
+export const Article = styled.article`
   ${markdownCss}
   ${bodyCss}
-  ${codeBlockCss}
+
+  padding: 5rem 3rem;
 `;

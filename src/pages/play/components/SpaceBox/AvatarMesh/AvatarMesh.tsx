@@ -27,47 +27,47 @@ export default function AvatarMesh({
 }: Props) {
   return (
     <>
-      <mesh position={position}>
-        <Html
-        // distanceFactor={10}
+      {/* <mesh position={position}> */}
+      <Html
+      // distanceFactor={10}
+      >
+        <div
+          onClick={() => {
+            const go = confirm(`${name}으로 이동하시겠어요?`);
+            if (go) {
+              swapCamera(position);
+            }
+          }}
         >
-          <div
-            onClick={() => {
-              const go = confirm(`${name}으로 이동하시겠어요?`);
-              if (go) {
-                swapCamera(position);
-              }
-            }}
-          >
-            <RoundedFrame isMe={me}>
-              <img
-                src={imgUrl}
-                css={css`
-                  ${S.center}
-                  width: ${me ? `85px` : `35px`};
-                  height: ${me ? `85px` : `35px`};
+          <RoundedFrame isMe={me}>
+            <img
+              src={imgUrl}
+              css={css`
+                ${S.center}
+                width: ${me ? `85px` : `35px`};
+                height: ${me ? `85px` : `35px`};
 
-                  /* width:100%; */
-                  /* height: 100%; */
-                  border-radius: 50%;
-                  border: 3px solid #7e71f3;
-                `}
-              />
-              <S.Name
-                css={css`
-                  position: absolute;
-                  bottom: -2rem;
-                  width: 100%;
-                  text-align: center;
-                  font-size: 12px;
-                `}
-              >
-                {name}
-              </S.Name>
-            </RoundedFrame>
-          </div>
-        </Html>
-      </mesh>
+                /* width:100%; */
+                /* height: 100%; */
+                border-radius: 50%;
+                border: 3px solid #7e71f3;
+              `}
+            />
+            <S.Name
+              css={css`
+                position: absolute;
+                bottom: -2rem;
+                width: 100%;
+                text-align: center;
+                font-size: 12px;
+              `}
+            >
+              {name}
+            </S.Name>
+          </RoundedFrame>
+        </div>
+      </Html>
+      {/* </mesh> */}
     </>
   );
 }

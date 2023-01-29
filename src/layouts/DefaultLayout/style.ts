@@ -1,0 +1,52 @@
+import COLORS from "@constants/colors";
+import styled from "@emotion/styled";
+
+export const Layout = styled.div`
+  min-height: 100vh;
+  background: ${COLORS.DARK_BLUE};
+`;
+
+export const Header = styled.header`
+  position: sticky;
+  top: 0;
+  left: 0;
+
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+
+  padding: 0rem 1rem;
+
+  backdrop-filter: blur(15px);
+`;
+
+export const Logo = styled.div`
+  min-width: 20rem;
+
+  a {
+    display: flex;
+    align-items: center;
+  }
+
+  img {
+    width: 6rem;
+  }
+
+  span {
+    font-size: 1.6rem;
+    color: ${COLORS.WHITE_01};
+    font-weight: bold;
+  }
+`;
+
+export const Main = styled.main``;
+
+export const Footer = styled.footer`
+  padding: 3rem 2rem 3rem;
+  text-align: center;
+
+  span {
+    color: ${COLORS.WHITE_02};
+    font-size: 1.2rem;
+  }
+`;

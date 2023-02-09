@@ -228,7 +228,6 @@ function CodeBlock({ block }: { block: CodeBlockObjectResponse }) {
   useEffect(() => {
     Prism.highlightAll();
   }, []);
-  console.log("@@block", block);
 
   return (
     <pre>

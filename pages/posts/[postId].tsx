@@ -94,7 +94,7 @@ const getStaticProps: GetStaticProps<any, { postId: string }, any> = async ({
       post,
       blocks: blocksWithChildren,
     },
-    revalidate: 60 * 60, // In seconds
+    // revalidate: 60 * 60, // seconds
   };
 };
 

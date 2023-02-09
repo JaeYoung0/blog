@@ -20,7 +20,7 @@ function DefaultLayout({ children }: Props) {
           </Link>
         </S.Logo>
 
-        <Navigation />
+        {/* <Navigation /> */}
       </S.Header>
       <S.Main>{children}</S.Main>
       <S.Footer>

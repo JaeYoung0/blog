@@ -47,5 +47,5 @@ export const Logo = styled.p`
 export const Navigation = styled.nav<{
   hideNavbar: boolean;
 }>`
-  width: 100%;
+  /* width: 100%; */
 `;

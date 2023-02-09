@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 
 export const Layout = styled.div`
   min-height: 100vh;
-  background: ${COLORS.DARK_BLUE};
+  background: #1a202c;
 `;
 
 export const Header = styled.header`
@@ -11,11 +11,11 @@ export const Header = styled.header`
   top: 0;
   left: 0;
 
-  display: flex;
-  justify-content: space-between;
   width: 100%;
+  /* max-width: 76rem; */
+  margin: 0 auto;
 
-  padding: 0rem 1rem;
+  padding: 1rem 2rem;
 
   backdrop-filter: blur(15px);
 `;

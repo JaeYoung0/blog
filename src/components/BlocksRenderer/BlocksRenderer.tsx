@@ -8,9 +8,11 @@ import {
   TextRichTextItemResponse,
   BulletedListItemBlockObjectResponse,
   NumberedListItemBlockObjectResponse,
+  CodeBlockObjectResponse,
 } from "@notionhq/client/build/src/api-endpoints";
 import * as S from "./style";
 import Prism from "prismjs";
+import { css } from "@emotion/react";
 
 type Props = {
   blocks: (BlockObjectResponse | PartialBlockObjectResponse)[];
@@ -33,23 +35,30 @@ function Text({ text }: { text: RichTextItemResponse[] }) {
           text,
         } = value;
 
+        if (code) return <code key={idx}>{text.content}</code>;
+
+        if (text.link)
+          return (
+            <a key={idx} href={text.link.url}>
+              {text.content}
+            </a>
+          );
+
+        if (bold)
+          return (
+            <span
+              key={idx}
+              css={css`
+                font-weight: bold;
+              `}
+            >
+              {text.content}
+            </span>
+          );
+
         return (
-          <span
-            key={idx}
-            className={[
-              bold ? bold : "",
-              code ? code : "",
-              italic ? italic : "",
-              strikethrough ? strikethrough : "",
-              underline ? underline : "",
-            ].join(" ")}
-            style={color !== "default" ? { color } : {}}
-          >
-            {text.link ? (
-              <a href={text.link.url}>{text.content}</a>
-            ) : (
-              text.content
-            )}
+          <span key={idx} style={color !== "default" ? { color } : {}}>
+            {text.content}
           </span>
         );
       })}
@@ -117,6 +126,7 @@ const renderBlock = (
           <Text text={block.heading_3.rich_text} />
         </h3>
       );
+    // TODO
     // case "bulleted_list_item":
     //   return (
     //     <li>
@@ -146,6 +156,7 @@ const renderBlock = (
       );
     case "toggle":
       return (
+        // TODO
         // <details>
         //   <summary>
         //     <Text text={value.rich_text} />
@@ -168,7 +179,11 @@ const renderBlock = (
         : "";
       return (
         <figure>
-          <img src={src} alt={caption} />
+          <img
+            src={src}
+            alt={caption}
+            onClick={() => window.open(src, "_blank")}
+          />
           {caption && <figcaption>{caption}</figcaption>}
         </figure>
       );
@@ -180,13 +195,7 @@ const renderBlock = (
         <blockquote key={id}>{block.quote.rich_text[0].plain_text}</blockquote>
       );
     case "code":
-      return (
-        <pre className="pre">
-          <code className="code_block" key={id}>
-            {block.code.rich_text[0].plain_text}
-          </code>
-        </pre>
-      );
+      return <CodeBlock block={block} />;
     case "file":
       // const src_file =
       //   value.type === "external" ? value.external.url : value.file.url;
@@ -215,11 +224,22 @@ const renderBlock = (
   }
 };
 
-function BlocksRenderer({ blocks }: Props) {
+function CodeBlock({ block }: { block: CodeBlockObjectResponse }) {
   useEffect(() => {
     Prism.highlightAll();
   }, []);
+  console.log("@@block", block);
 
+  return (
+    <pre>
+      <code className={`language-${block.code.language}`}>
+        {block.code.rich_text[0].plain_text}
+      </code>
+    </pre>
+  );
+}
+
+function BlocksRenderer({ blocks }: Props) {
   return (
     <S.Container>
       <S.Article>

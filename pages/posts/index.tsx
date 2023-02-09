@@ -9,18 +9,21 @@ import DefaultLayout from "@layouts/DefaultLayout";
 
 export default function Posts({ posts }: T.PostsPageProps) {
   const { push } = useRouter();
+
   return (
     <DefaultLayout>
       <S.Outer>
         {posts.map((post, idx) => {
-          const { title, subtitle, tags } = post;
+          const { title, subtitle, tags, iconUrl } = post;
           // if (!isPageObjectResponse(post)) return null;
 
           return (
             <S.Post key={idx} onClick={() => push(`/posts/${post.id}`)}>
+              {/* <S.IconImg src={iconUrl ?? ""} /> */}
               <S.Title>{title}</S.Title>
               <S.Subtitle>{subtitle}</S.Subtitle>
               <S.ReadMore>더 읽기{` >> `}</S.ReadMore>
+
               <div
                 css={css`
                   display: flex;
@@ -67,7 +70,7 @@ export const getStaticProps: GetStaticProps = async () => {
   const newPosts: T.PostsPageProps["posts"] = publishedPosts.map((post) => {
     const myProperties = post.properties as T.MyNotionPageColumns;
 
-    const { title, subtitle, tags } = myProperties;
+    const { title, subtitle, tags, icon } = myProperties;
     const titleText = title.title[0].text.content;
 
     const subtitleText = subtitle?.rich_text[0]?.text.content ?? "";
@@ -77,6 +80,7 @@ export const getStaticProps: GetStaticProps = async () => {
       title: titleText,
       subtitle: subtitleText,
       tags: tagList,
+      iconUrl: icon?.files?.[0]?.file?.url ?? null,
     };
     return result;
   });

@@ -1,5 +1,6 @@
 import {
   CheckboxPropertyItemObjectResponse,
+  FilesPropertyItemObjectResponse,
   MultiSelectPropertyItemObjectResponse,
   SelectPropertyItemObjectResponse,
   TextRichTextItemResponse,
@@ -27,8 +28,11 @@ export type PostsPageProps = {
     title: string;
     subtitle: string;
     tags: SelectPropertyItemObjectResponse["select"][];
+    iconUrl: string | null;
   }[];
 };
+
+// type WOW = SelectPropertyResponse
 
 // 노션 db에서 정리한 컬럼들
 export type MyNotionPageColumns = {
@@ -36,6 +40,7 @@ export type MyNotionPageColumns = {
   subtitle: SubtitleColumn;
   tags: MultiSelectPropertyItemObjectResponse;
   published: CheckboxPropertyItemObjectResponse;
+  icon?: IconColumn;
 };
 
 export type TitleColumn = {
@@ -52,4 +57,18 @@ export type SubtitleColumn = {
 export type PublishedColumn = {
   type: "checkbox";
   checkbox: boolean;
+};
+
+type IconColumn = {
+  type: "files";
+  files: Array<{
+    file: {
+      url: string;
+      expiry_time: string;
+    };
+    name: string;
+    type?: "file";
+  }>;
+  object: "property_item";
+  id: string;
 };

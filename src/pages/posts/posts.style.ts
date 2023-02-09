@@ -23,6 +23,10 @@ export const Post = styled.article`
   }
 `;
 
+export const IconImg = styled.img`
+  width: 3rem;
+`;
+
 export const Title = styled.h1`
   font-size: 1.8rem;
   font-weight: bold;

@@ -14,7 +14,7 @@ export const Header = styled.header`
   width: 100%;
   /* max-width: 76rem; */
   margin: 0 auto;
-
+  z-index: 999;
   padding: 1rem 2rem;
 
   backdrop-filter: blur(15px);

@@ -13,6 +13,7 @@ import {
 import * as S from "./style";
 import Prism from "prismjs";
 import { css } from "@emotion/react";
+import { EnhancedNumberedListItemBlockObjectResponse } from "./types";
 
 type Props = {
   blocks: (BlockObjectResponse | PartialBlockObjectResponse)[];
@@ -87,7 +88,7 @@ const renderNestedList = (
   // );
 };
 
-function isBlockObjectResponse(
+export function isBlockObjectResponse(
   block: PartialBlockObjectResponse | BlockObjectResponse
 ): block is BlockObjectResponse {
   return (block as BlockObjectResponse).type !== undefined;
@@ -96,13 +97,21 @@ function isBlockObjectResponse(
 const renderBlock = (
   block: PartialBlockObjectResponse | BlockObjectResponse
 ) => {
-  console.log("@@block", block);
-
   if (!isBlockObjectResponse(block)) return;
   const { type, id } = block;
 
   switch (type) {
     case "paragraph":
+      if (block.paragraph.rich_text.length === 0) {
+        return (
+          <span
+            css={css`
+              white-space: pre;
+            `}
+          >{`\n`}</span>
+        );
+      }
+
       return (
         <p>
           <Text text={block.paragraph.rich_text} />
@@ -134,13 +143,28 @@ const renderBlock = (
     //       {!!block.has_children && renderNestedList(block)}
     //     </li>
     //   );
-    // case "numbered_list_item":
-    //   return (
-    //     <li>
-    //       <Text text={block.numbered_list_item.rich_text} />
-    //       {!!block.has_children && renderNestedList(block)}
-    //     </li>
-    //   );
+    case "numbered_list_item":
+      return (
+        <>
+          <li
+            css={css`
+              list-style: none;
+            `}
+          >
+            <span
+              css={css`
+                display: inline-block;
+                margin-right: 1rem;
+              `}
+            >{`${
+              (block as EnhancedNumberedListItemBlockObjectResponse).numbering
+            }. `}</span>
+            <Text text={block.numbered_list_item.rich_text} />
+          </li>
+
+          {!!block.has_children && renderNestedList(block)}
+        </>
+      );
     case "to_do":
       return (
         <div>
@@ -242,9 +266,13 @@ function BlocksRenderer({ blocks }: Props) {
   return (
     <S.Container>
       <S.Article>
-        {blocks.map((block) => (
-          <React.Fragment key={block.id}>{renderBlock(block)}</React.Fragment>
-        ))}
+        {blocks.map((block) => {
+          if (!isBlockObjectResponse(block)) return;
+
+          return (
+            <React.Fragment key={block.id}>{renderBlock(block)}</React.Fragment>
+          );
+        })}
       </S.Article>
       {/* aside */}
     </S.Container>

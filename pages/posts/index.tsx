@@ -15,7 +15,6 @@ export default function Posts({ posts }: T.PostsPageProps) {
       <S.Outer>
         {posts.map((post, idx) => {
           const { title, subtitle, tags, iconUrl } = post;
-          // if (!isPageObjectResponse(post)) return null;
 
           return (
             <S.Post key={idx} onClick={() => push(`/posts/${post.id}`)}>
@@ -23,7 +22,6 @@ export default function Posts({ posts }: T.PostsPageProps) {
               <S.Title>{title}</S.Title>
               <S.Subtitle>{subtitle}</S.Subtitle>
               <S.ReadMore>더 읽기{` >> `}</S.ReadMore>
-
               <div
                 css={css`
                   display: flex;

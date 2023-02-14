@@ -1,6 +1,5 @@
 import { GetStaticPaths, GetStaticProps } from "next";
 import DefaultLayout from "@layouts/DefaultLayout";
-
 import UtteranceComment from "@components/UtteranceComment";
 import { getNotionBlocks, getNotionDB, getNotionPage } from "@services/notion";
 import {
@@ -11,6 +10,8 @@ import {
 import BlocksRenderer from "@components/BlocksRenderer";
 import { TitleColumn } from "@pages/posts/type";
 import * as S from "@pages/posts/post.style";
+import { isBlockObjectResponse } from "@components/BlocksRenderer/BlocksRenderer";
+import { EnhancedNumberedListItemBlockObjectResponse } from "@components/BlocksRenderer/types";
 type PostPageProps = {
   post: PageObjectResponse; // GetPageResponse로 일일이 쓰기는 귀찮다..
   blocks: BlockObjectResponse[];
@@ -57,6 +58,24 @@ const getStaticProps: GetStaticProps<any, { postId: string }, any> = async ({
   const post = await getNotionPage(id);
   const blocks = await getNotionBlocks(id);
 
+  const blocksWithNumbering = (blocks: BlockObjectResponse[]) => {
+    let idx = 1;
+    return blocks.map((block) => {
+      if (!isBlockObjectResponse(block)) return;
+      if (block.type === "numbered_list_item") {
+        // TODO. 서버 응답에 맞는 타입정의를 보완해서 사용하고 싶다면? as 말고 더 좋은 방식? 길더라도 type predicate?
+        (block as EnhancedNumberedListItemBlockObjectResponse).numbering =
+          idx++;
+      } else {
+        idx = 1;
+      }
+
+      return block;
+    });
+  };
+
+  const enhancedBlocks = blocksWithNumbering(blocks);
+
   const childBlocks = await Promise.all(
     blocks
       .filter((block) => block.has_children ?? false)
@@ -68,17 +87,12 @@ const getStaticProps: GetStaticProps<any, { postId: string }, any> = async ({
       })
   );
 
-  // console.log(
-  //   "@@childBlocks",
-  //   childBlocks.map((item) => item.children)
-  // );
-
   const blocksWithChildren = blocks.map((block) => {
     if (block.type === "audio") return;
     // childblock 안더함
 
     // block[block.type]
-    // // Add child blocks if the block should contain children but none exists
+    // Add child blocks if the block should contain children but none exists
     // if (block.has_children && !block[block.type].children) {
     //   block[block.type]["children"] = childBlocks.find(
     //     (x) => x.id === block.id
@@ -87,12 +101,10 @@ const getStaticProps: GetStaticProps<any, { postId: string }, any> = async ({
     return block;
   });
 
-  // console.log("@@blocksWithChildren", blocksWithChildren);
-
   return {
     props: {
       post,
-      blocks: blocksWithChildren,
+      blocks: enhancedBlocks,
     },
     // revalidate: 60 * 60, // seconds
   };

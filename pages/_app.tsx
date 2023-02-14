@@ -4,6 +4,7 @@ import { css, Global } from "@emotion/react";
 import resetStyle from "@styles/resetStyle";
 import fontStyle from "@styles/fontStyle";
 import { RecoilRoot } from "recoil";
+import { reportWebVitals } from "@/utils/reportWebVitals";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -31,5 +32,7 @@ function MyGlobalStyle() {
     />
   );
 }
+
+export { reportWebVitals };
 
 export default MyApp;

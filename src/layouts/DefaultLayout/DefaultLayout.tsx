@@ -12,7 +12,6 @@ function DefaultLayout({ children }: Props) {
   return (
     <S.Layout>
       <S.Header>
-        {/* TODO. Link가 바깥에 있는게 맞나? */}
         <S.Logo>
           <Link href="/posts">
             <img style={{ width: "6rem" }} src="/blog-logo-2.png" />

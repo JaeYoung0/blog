@@ -11,7 +11,7 @@ import BlocksRenderer from "@components/BlocksRenderer";
 import { TitleColumn } from "@pages/posts/type";
 import * as S from "@pages/posts/post.style";
 import { isBlockObjectResponse } from "@components/BlocksRenderer/BlocksRenderer";
-import { EnhancedNumberedListItemBlockObjectResponse } from "@components/BlocksRenderer/types";
+
 type PostPageProps = {
   post: PageObjectResponse; // GetPageResponse로 일일이 쓰기는 귀찮다..
   blocks: BlockObjectResponse[];
@@ -64,8 +64,7 @@ const getStaticProps: GetStaticProps<any, { postId: string }, any> = async ({
       if (!isBlockObjectResponse(block)) return;
       if (block.type === "numbered_list_item") {
         // TODO. 서버 응답에 맞는 타입정의를 보완해서 사용하고 싶다면? as 말고 더 좋은 방식? 길더라도 type predicate?
-        (block as EnhancedNumberedListItemBlockObjectResponse).numbering =
-          idx++;
+        block.numbering = idx++;
       } else {
         idx = 1;
       }

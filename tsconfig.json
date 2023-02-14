@@ -12,7 +12,8 @@
       "@services/*": ["src/services/*"],
       "@atoms/*": ["src/atoms/*"],
       "@public/*": ["public/*"],
-      "@/*": ["src/*"]
+      "@/*": ["src/*"],
+      "@notionhq/client/build/src/api-endpoints": ["src/@types/api-endpoints"]
     },
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],

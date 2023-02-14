@@ -13,7 +13,6 @@ import {
 import * as S from "./style";
 import Prism from "prismjs";
 import { css } from "@emotion/react";
-import { EnhancedNumberedListItemBlockObjectResponse } from "./types";
 
 type Props = {
   blocks: (BlockObjectResponse | PartialBlockObjectResponse)[];
@@ -73,7 +72,7 @@ const renderNestedList = (
     | NumberedListItemBlockObjectResponse
 ) => {
   // const { type } = block;
-  // 애초에 패키지에서 타입정의가 잘못됨
+  // TODO. 애초에 패키지에서 타입정의가 잘못됨
   // if (type === "numbered_list_item") {
   //   return (
   //     <ol>
@@ -136,13 +135,13 @@ const renderBlock = (
         </h3>
       );
     // TODO
-    // case "bulleted_list_item":
-    //   return (
-    //     <li>
-    //       <Text text={block.bulleted_list_item.rich_text} />
-    //       {!!block.has_children && renderNestedList(block)}
-    //     </li>
-    //   );
+    case "bulleted_list_item":
+      return (
+        <li>
+          <Text text={block.bulleted_list_item.rich_text} />
+          {/* {!!block.has_children && renderNestedList(block)} */}
+        </li>
+      );
     case "numbered_list_item":
       return (
         <>
@@ -156,9 +155,7 @@ const renderBlock = (
                 display: inline-block;
                 margin-right: 1rem;
               `}
-            >{`${
-              (block as EnhancedNumberedListItemBlockObjectResponse).numbering
-            }. `}</span>
+            >{`${block.numbering}. `}</span>
             <Text text={block.numbered_list_item.rich_text} />
           </li>
 

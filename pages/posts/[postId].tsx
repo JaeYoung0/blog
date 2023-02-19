@@ -1,4 +1,4 @@
-import { GetStaticPaths, GetStaticProps } from "next";
+import { GetServerSideProps, GetStaticPaths, GetStaticProps } from "next";
 import DefaultLayout from "@layouts/DefaultLayout";
 import UtteranceComment from "@components/UtteranceComment";
 import { getNotionBlocks, getNotionDB, getNotionPage } from "@services/notion";
@@ -105,9 +105,9 @@ const getStaticProps: GetStaticProps<any, { postId: string }, any> = async ({
       post,
       blocks: enhancedBlocks,
     },
-    // revalidate: 60 * 60, // seconds
+    revalidate: 60 * 60, // seconds
   };
 };
 
-export { getStaticProps, getStaticPaths };
+export { getStaticPaths, getStaticProps };
 export default PostPage;

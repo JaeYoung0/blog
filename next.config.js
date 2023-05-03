@@ -16,16 +16,6 @@ const nextConfig = {
 
   reactStrictMode: true,
 
-  async redirects() {
-    return [
-      {
-        source: "/",
-        destination: "/posts",
-        permanent: true,
-      },
-    ];
-  },
-
   // lint는 commit할 때 check한다.
   eslint: {
     ignoreDuringBuilds: true,

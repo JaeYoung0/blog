@@ -19,8 +19,6 @@ jobs:
 
       - name: Check NEXT_PUBLIC_DEPLOY_TYPE
         run: |
-          echo "@@vercel의 환경변수를 전부 출력합니다."
-          cat .vercel/.env.production.local
           echo "@@NEXT_PUBLIC_DEPLOY_TYPE을 검사합니다."
           if (cat .vercel/.env.production.local | grep "NEXT_PUBLIC_DEPLOY_TYPE=\"PROD\""); then
             echo ok

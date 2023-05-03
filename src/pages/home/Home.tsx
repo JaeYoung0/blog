@@ -8,9 +8,7 @@ function HomePage() {
     <DefaultLayout>
       <S.Wrapper>
         <S.Banner>
-          <h1>Front-End</h1>
-          <h1>Developer</h1>
-          <h2>제이영입니다.</h2>
+          <h1>롤백가즈아</h1>
         </S.Banner>
       </S.Wrapper>
 

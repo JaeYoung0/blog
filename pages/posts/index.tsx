@@ -12,6 +12,7 @@ export default function Posts({ posts }: T.PostsPageProps) {
 
   return (
     <DefaultLayout>
+      <p>wow</p>
       <S.Outer>
         {posts.map((post, idx) => {
           const { title, subtitle, tags, iconUrl } = post;

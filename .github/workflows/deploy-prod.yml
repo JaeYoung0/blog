@@ -1,0 +1,36 @@
+name: Production Tag Deployment
+env:
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+on:
+  release:
+    types: [published]
+jobs:
+  Deploy-Production:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install Vercel CLI
+        run: npm install --global vercel@latest
+
+      - name: Pull Vercel Environment Information
+        run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Check NEXT_PUBLIC_DEPLOY_TYPE
+        run: |
+          echo "@@vercel의 환경변수를 전부 출력합니다."
+          cat .vercel/.env.production.local
+          echo "@@NEXT_PUBLIC_DEPLOY_TYPE을 검사합니다."
+          if (cat .vercel/.env.production.local | grep "NEXT_PUBLIC_DEPLOY_TYPE=\"PROD\""); then
+            echo ok
+          else
+            echo "@@NEXT_PUBLIC_DEPLOY_TYPE 변수가 잘못 들어갔습니다."
+            exit 1
+          fi
+
+      - name: Build Project Artifacts
+        run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Deploy Project Artifacts to Vercel
+        run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}

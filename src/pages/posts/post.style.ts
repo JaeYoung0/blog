@@ -9,6 +9,9 @@ export const Title = styled.h1`
   color: ${COLORS.WHITE_01};
   padding: 3rem 2rem 6rem;
   line-height: 1.5;
+
+  max-width: 90rem;
+  margin: 0 auto;
 `;
 
 export const Subtitle = styled.h2`

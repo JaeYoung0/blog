@@ -13,6 +13,7 @@ import {
 import * as S from "./style";
 import Prism from "prismjs";
 import { css } from "@emotion/react";
+import "prismjs/components/prism-typescript";
 
 type Props = {
   blocks: (BlockObjectResponse | PartialBlockObjectResponse)[];
@@ -238,6 +239,8 @@ const renderBlock = (
     case "bookmark":
       // const href
       return <div></div>;
+    case "table_of_contents":
+      return <></>;
     default:
       return `❌ Unsupported block (${
         type === "unsupported" ? "unsupported by Notion API" : type

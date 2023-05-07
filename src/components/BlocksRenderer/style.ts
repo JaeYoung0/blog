@@ -1201,7 +1201,7 @@ const markdownCss = css`
     border-top: 1px solid var(--color-border-muted);
   }
 
-  table tr:nth-child(2n) {
+  table tr:nth-of-type(2n) {
     background-color: var(--color-canvas-subtle);
   }
 

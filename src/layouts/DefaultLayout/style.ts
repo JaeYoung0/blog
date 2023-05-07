@@ -12,7 +12,8 @@ export const Header = styled.header`
   left: 0;
 
   width: 100%;
-  /* max-width: 76rem; */
+  height: 8rem;
+
   margin: 0 auto;
   z-index: 999;
   padding: 1rem 2rem;

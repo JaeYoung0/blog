@@ -196,15 +196,30 @@ const renderBlock = (
         block.image.type === "external"
           ? block.image.external.url
           : block.image.file.url;
+
+      // https://github.com/splitbee/react-notion/pull/32/commits/4bc20164d4a8f37b777b2cce3308c7868d30afad
+      // origin: "https://s3.us-west-2.amazonaws.com"
+      // pathname: "/secure.notion-static.com/091a8939-3ef7-464b-8615-a405b5d66e2b/Untitled.png"
+      const { origin, pathname } = new URL(src);
+
+      const newSrc = new URL(
+        `https://www.notion.so/image/${encodeURIComponent(
+          `${origin}${pathname}`
+        )}`
+      );
+      newSrc.searchParams.set("id", block.id);
+      newSrc.searchParams.set("table", "block");
+      newSrc.searchParams.set("cache", "v2");
+
       const caption = block.image.caption
         ? block.image.caption[0]?.plain_text
         : "";
       return (
         <figure>
           <img
-            src={src}
+            src={String(newSrc)}
             alt={caption}
-            onClick={() => window.open(src, "_blank")}
+            onClick={() => window.open(newSrc, "_blank")}
           />
           {caption && <figcaption>{caption}</figcaption>}
         </figure>

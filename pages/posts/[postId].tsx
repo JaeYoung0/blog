@@ -43,7 +43,6 @@ const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths,
-
     // must be false...
     // https://nextjs.org/docs/basic-features/data-fetching/get-static-paths#how-does-getstaticprops-run-with-regards-to-getstaticpaths
     fallback: false,
@@ -54,7 +53,6 @@ const getStaticProps: GetStaticProps<any, { postId: string }, any> = async ({
   params,
 }) => {
   const id = params!.postId;
-
   const post = await getNotionPage(id);
   const blocks = await getNotionBlocks(id);
 
@@ -105,7 +103,6 @@ const getStaticProps: GetStaticProps<any, { postId: string }, any> = async ({
       post,
       blocks: enhancedBlocks,
     },
-    revalidate: 60 * 60, // seconds
   };
 };
 

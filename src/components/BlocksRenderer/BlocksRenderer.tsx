@@ -11,61 +11,16 @@ import {
   CodeBlockObjectResponse,
 } from "@notionhq/client/build/src/api-endpoints";
 import * as S from "./style";
-import Prism from "prismjs";
+
 import { css } from "@emotion/react";
-import "prismjs/components/prism-typescript";
+
+import CodeBlock from "@components/NotionBlock/CodeBlock";
+import ImageBlock from "@components/NotionBlock/ImageBlock/ImageBlock";
+import TextBlock from "@components/NotionBlock/TextBlock/TextBlock";
 
 type Props = {
   blocks: (BlockObjectResponse | PartialBlockObjectResponse)[];
 };
-
-function isTextItem(
-  text: RichTextItemResponse
-): text is TextRichTextItemResponse {
-  return !!(text as TextRichTextItemResponse).text;
-}
-
-function Text({ text }: { text: RichTextItemResponse[] }) {
-  return (
-    <>
-      {text.map((value, idx) => {
-        if (!isTextItem(value)) return <span></span>;
-
-        const {
-          annotations: { bold, code, color, italic, strikethrough, underline },
-          text,
-        } = value;
-
-        if (code) return <code key={idx}>{text.content}</code>;
-
-        if (text.link)
-          return (
-            <a key={idx} href={text.link.url}>
-              {text.content}
-            </a>
-          );
-
-        if (bold)
-          return (
-            <span
-              key={idx}
-              css={css`
-                font-weight: bold;
-              `}
-            >
-              {text.content}
-            </span>
-          );
-
-        return (
-          <span key={idx} style={color !== "default" ? { color } : {}}>
-            {text.content}
-          </span>
-        );
-      })}
-    </>
-  );
-}
 
 const renderNestedList = (
   block:
@@ -114,32 +69,32 @@ const renderBlock = (
 
       return (
         <p>
-          <Text text={block.paragraph.rich_text} />
+          <TextBlock text={block.paragraph.rich_text} />
         </p>
       );
     case "heading_1":
       return (
         <h1>
-          <Text text={block.heading_1.rich_text} />
+          <TextBlock text={block.heading_1.rich_text} />
         </h1>
       );
     case "heading_2":
       return (
         <h2>
-          <Text text={block.heading_2.rich_text} />
+          <TextBlock text={block.heading_2.rich_text} />
         </h2>
       );
     case "heading_3":
       return (
         <h3>
-          <Text text={block.heading_3.rich_text} />
+          <TextBlock text={block.heading_3.rich_text} />
         </h3>
       );
     // TODO
     case "bulleted_list_item":
       return (
         <li>
-          <Text text={block.bulleted_list_item.rich_text} />
+          <TextBlock text={block.bulleted_list_item.rich_text} />
           {/* {!!block.has_children && renderNestedList(block)} */}
         </li>
       );
@@ -157,7 +112,7 @@ const renderBlock = (
                 margin-right: 1rem;
               `}
             >{`${block.numbering}. `}</span>
-            <Text text={block.numbered_list_item.rich_text} />
+            <TextBlock text={block.numbered_list_item.rich_text} />
           </li>
 
           {!!block.has_children && renderNestedList(block)}
@@ -172,7 +127,7 @@ const renderBlock = (
               id={id}
               defaultChecked={block.to_do.checked}
             />{" "}
-            <Text text={block.to_do.rich_text} />
+            <TextBlock text={block.to_do.rich_text} />
           </label>
         </div>
       );
@@ -191,40 +146,9 @@ const renderBlock = (
       );
     case "child_page":
       return <p>{block.child_page.title}</p>;
-    case "image": {
-      const src =
-        block.image.type === "external"
-          ? block.image.external.url
-          : block.image.file.url;
+    case "image":
+      return <ImageBlock block={block} />;
 
-      // https://github.com/splitbee/react-notion/pull/32/commits/4bc20164d4a8f37b777b2cce3308c7868d30afad
-      // origin: "https://s3.us-west-2.amazonaws.com"
-      // pathname: "/secure.notion-static.com/091a8939-3ef7-464b-8615-a405b5d66e2b/Untitled.png"
-      const { origin, pathname } = new URL(src);
-
-      const newSrc = new URL(
-        `https://www.notion.so/image/${encodeURIComponent(
-          `${origin}${pathname}`
-        )}`
-      );
-      newSrc.searchParams.set("id", block.id);
-      newSrc.searchParams.set("table", "block");
-      newSrc.searchParams.set("cache", "v2");
-
-      const caption = block.image.caption
-        ? block.image.caption[0]?.plain_text
-        : "";
-      return (
-        <figure>
-          <img
-            src={String(newSrc)}
-            alt={caption}
-            onClick={() => window.open(newSrc, "_blank")}
-          />
-          {caption && <figcaption>{caption}</figcaption>}
-        </figure>
-      );
-    }
     case "divider":
       return <hr key={id} />;
     case "quote":
@@ -263,21 +187,9 @@ const renderBlock = (
   }
 };
 
-function CodeBlock({ block }: { block: CodeBlockObjectResponse }) {
-  useEffect(() => {
-    Prism.highlightAll();
-  }, []);
-
-  return (
-    <pre>
-      <code className={`language-${block.code.language}`}>
-        {block.code.rich_text[0].plain_text}
-      </code>
-    </pre>
-  );
-}
-
 function BlocksRenderer({ blocks }: Props) {
+  console.log("@@blocks", blocks);
+
   return (
     <S.Container>
       <S.Article>

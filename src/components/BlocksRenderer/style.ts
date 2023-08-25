@@ -563,6 +563,10 @@ const markdownCss = css`
     display: block;
   }
 
+  figcaption {
+    font-size: 1rem;
+  }
+
   summary {
     display: list-item;
   }
@@ -602,6 +606,7 @@ const markdownCss = css`
     padding-bottom: 0.3em;
     font-size: 2em;
     border-bottom: 1px solid var(--color-border-muted);
+    word-break: keep-all;
   }
 
   mark {

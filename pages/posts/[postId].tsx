@@ -55,6 +55,7 @@ const getStaticProps: GetStaticProps<any, { postId: string }, any> = async ({
   const id = params!.postId;
   const post = await getNotionPage(id);
   const blocks = await getNotionBlocks(id);
+  console.log("@@@@blocks", blocks);
 
   const blocksWithNumbering = (blocks: BlockObjectResponse[]) => {
     let idx = 1;

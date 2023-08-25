@@ -11,6 +11,7 @@ import BlocksRenderer from "@components/BlocksRenderer";
 import { TitleColumn } from "@pages/posts/type";
 import * as S from "@pages/posts/post.style";
 import { isBlockObjectResponse } from "@components/BlocksRenderer/BlocksRenderer";
+import TableOfContents from "@components/TableOfContents/TableOfContents";
 
 type PostPageProps = {
   post: PageObjectResponse; // GetPageResponse로 일일이 쓰기는 귀찮다..
@@ -23,6 +24,7 @@ function PostPage({ post, blocks }: PostPageProps) {
       <S.Title>
         {(post.properties.title as TitleColumn).title[0].text.content}
       </S.Title>
+
       {/* <S.Subtitle> */}
       {/* {(post.properties.subtitle as SubtitleColumn).title[0].text.content} */}
       {/* </S.Subtitle> */}
@@ -55,7 +57,6 @@ const getStaticProps: GetStaticProps<any, { postId: string }, any> = async ({
   const id = params!.postId;
   const post = await getNotionPage(id);
   const blocks = await getNotionBlocks(id);
-  console.log("@@@@blocks", blocks);
 
   const blocksWithNumbering = (blocks: BlockObjectResponse[]) => {
     let idx = 1;

@@ -532,6 +532,8 @@ const markdownCss = css`
   margin: 0;
   color: var(--color-fg-default);
   background-color: var(--color-canvas-default);
+
+  /* FIX? */
   font-size: 16px;
   line-height: 1.5;
   word-wrap: break-word;
@@ -1476,7 +1478,7 @@ const markdownCss = css`
 
 const bodyCss = css`
   width: 100%;
-  max-width: min(84rem, 100%);
+  max-width: 84rem;
 
   margin: 0 auto;
   color: #e4e5e7;

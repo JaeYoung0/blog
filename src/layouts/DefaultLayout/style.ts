@@ -12,7 +12,7 @@ export const Header = styled.header`
   left: 0;
 
   width: 100%;
-  height: 8rem;
+  height: 6rem;
 
   margin: 0 auto;
   z-index: 999;

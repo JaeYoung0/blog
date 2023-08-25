@@ -17,6 +17,7 @@ import { css } from "@emotion/react";
 import CodeBlock from "@components/NotionBlock/CodeBlock";
 import ImageBlock from "@components/NotionBlock/ImageBlock/ImageBlock";
 import TextBlock from "@components/NotionBlock/TextBlock/TextBlock";
+import TableOfContents from "@components/TableOfContents/TableOfContents";
 
 type Props = {
   blocks: (BlockObjectResponse | PartialBlockObjectResponse)[];
@@ -188,21 +189,23 @@ const renderBlock = (
 };
 
 function BlocksRenderer({ blocks }: Props) {
-  console.log("@@blocks", blocks);
-
   return (
-    <S.Container>
-      <S.Article>
-        {blocks.map((block) => {
-          if (!isBlockObjectResponse(block)) return;
+    <TableOfContents>
+      <S.Container>
+        <S.Article>
+          {blocks.map((block) => {
+            if (!isBlockObjectResponse(block)) return;
 
-          return (
-            <React.Fragment key={block.id}>{renderBlock(block)}</React.Fragment>
-          );
-        })}
-      </S.Article>
-      {/* aside */}
-    </S.Container>
+            return (
+              <React.Fragment key={block.id}>
+                {renderBlock(block)}
+              </React.Fragment>
+            );
+          })}
+        </S.Article>
+        {/* aside */}
+      </S.Container>
+    </TableOfContents>
   );
 }
 
